@@ -5,8 +5,13 @@ sudo apt-get install \
 	make \
 	build-essential \
 	libx11-dev \
+	x11-utils \
 	libxft-dev \
 	libxinerama-dev \
 	libxrandr-dev \
 	xorg \
-	cloudflare-warp
+	curl \
+	snapd \
+	timeshift
+
+sudo snap install bitwarden
