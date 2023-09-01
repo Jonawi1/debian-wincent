@@ -3,8 +3,6 @@ sudo apt-get install \
 	neovim \
 	git \
 	make \
-	grep \
-	wget \
 	build-essential \
 	libx11-dev \
 	libxft-dev \
