@@ -1,6 +1,5 @@
 #!/bin/bash
 sudo apt-get install \
-	neovim \
 	git \
 	make \
 	build-essential \
@@ -12,6 +11,10 @@ sudo apt-get install \
 	xorg \
 	curl \
 	snapd \
-	timeshift
+	timeshift \
+	ninja-build \
+	gettext \
+	cmake \
+	unzip 
 
 sudo snap install bitwarden
