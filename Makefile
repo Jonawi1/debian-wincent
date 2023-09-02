@@ -1,6 +1,6 @@
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
-install.log: appInstall.log makeInstall.log NvChad.log setupStartx.log fixPremissions.log alias.log
+install.log: appInstall.log makeInstall.log NvChad.log setup.log fixPremissions.log alias.log
 	echo "Success" > install.log
 
 appInstall.log:
@@ -23,10 +23,11 @@ NvChad.log: appInstall.log
 	sudo ln -s $(user_home)/.config/nvim /root/.config
 	echo "Success" > NvChad.log
 
-setupStartx.log:
+setup.log:
 	cp -i .bash_profile $(user_home)/.bash_profile
 	cp -i .xinitrc $(user_home)/.xinitrc
-	echo "Success" > setupStartx.log
+	feh --bg-fill ./IMG_20230802_151507.jpg
+	echo "Success" > setup.log
 
 fixPremissions.log:
 	sudo chown -R $(user):$(user) $(user_home)

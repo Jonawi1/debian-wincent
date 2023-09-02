@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo apt-get install nala
+sudo apt purge nano
 
 sudo nala install \
 	git \
@@ -28,6 +29,7 @@ sudo nala install \
 	ovmf \
 	qutebrowser \
 	feh \
-	picom
+	picom \
+  gimp
 
 sudo snap install bitwarden
