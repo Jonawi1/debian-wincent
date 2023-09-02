@@ -28,4 +28,5 @@ setupStartx.log:
 
 fixPremissions.log:
 	sudo chown -R $(user):$(user) $(user_home)
+	sudo adduser $(user) libvirt
 	echo "Success" > fixPremissions.log
