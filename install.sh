@@ -23,6 +23,7 @@ sudo apt-get install \
   qemu-system \
   qemu-system-x86 \
   virt-manager \
-  ovmf
+  ovmf \
+  qutebrowser
 
 sudo snap install bitwarden
