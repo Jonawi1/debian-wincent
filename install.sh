@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo apt-get install nala
+sudo apt purge nano
 
 sudo nala install \
 	git \
@@ -7,7 +8,7 @@ sudo nala install \
 	build-essential \
 	libx11-dev \
 	x11-utils \
-  x11-xserver-utils \
+	x11-xserver-utils \
 	libxft-dev \
 	libxinerama-dev \
 	libxrandr-dev \
@@ -20,12 +21,15 @@ sudo nala install \
 	cmake \
 	unzip \
 	python3-venv \
-  libvirt-daemon-system \
-  qemu-utils \
-  qemu-system \
-  qemu-system-x86 \
-  virt-manager \
-  ovmf \
-  qutebrowser
+	libvirt-daemon-system \
+	qemu-utils \
+	qemu-system \
+	qemu-system-x86 \
+	virt-manager \
+	ovmf \
+	qutebrowser \
+	feh \
+	picom \
+  gimp
 
 sudo snap install bitwarden
