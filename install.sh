@@ -1,5 +1,7 @@
 #!/bin/bash
-sudo apt-get install \
+sudo apt-get install nala
+
+sudo nala install \
 	git \
 	make \
 	build-essential \
