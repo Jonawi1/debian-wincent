@@ -15,6 +15,7 @@ sudo apt-get install \
 	ninja-build \
 	gettext \
 	cmake \
-	unzip 
+	unzip \
+	python3-venv	
 
 sudo snap install bitwarden
