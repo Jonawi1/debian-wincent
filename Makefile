@@ -1,6 +1,6 @@
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
-install.log: appInstall.log makeInstall.log NvChad.log setupStartx.log fixPremissions.log
+install.log: appInstall.log makeInstall.log NvChad.log setupStartx.log fixPremissions.log alias.log
 	echo "Success" > install.log
 
 appInstall.log:
@@ -28,4 +28,12 @@ setupStartx.log:
 
 fixPremissions.log:
 	sudo chown -R $(user):$(user) $(user_home)
+	sudo adduser $(user) libvirt
 	echo "Success" > fixPremissions.log
+
+alias.log: appInstall.log NvChad.log
+	printf "%s\n" "alias apt=nala" >> $(user_home)/.bashrc
+	printf "%s\n" "alias vim=nvim" >> $(user_home)/.bashrc
+	printf "%s\n" "alias ll='ls -lA'" >> $(user_home)/.bashrc
+	printf "%s\n" "alias la='ls -a" >> $(user_home)/.bashrc
+	echo "Success" > alias.log
