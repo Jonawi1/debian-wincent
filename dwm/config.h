@@ -35,7 +35,7 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     iscentered  isfloating  CenterThisWindow?   monitor */
   { "st",       NULL,       NULL,       0,            0,          0,          1,                  -1 },
-	{ "Gimp",     NULL,       NULL,       0,            1,          1,          0,                  -1 },
+	{ "Gimp",     NULL,       NULL,       0,            0,          1,          0,                  -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,          0,          0,                  -1 },
 };
 
@@ -107,6 +107,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      exitdwm,       {0} },
+  { MODKEY|ControlMask|ShiftMask, XK_q,      quit,          {1} },
 };
 
 /* button definitions */
