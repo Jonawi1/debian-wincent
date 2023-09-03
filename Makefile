@@ -1,3 +1,5 @@
+# See LICENSE file for copyright and license details.
+
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 install: appInstall makeInstall nvChad startup alias fonts
