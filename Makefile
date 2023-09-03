@@ -1,10 +1,15 @@
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
-install: appInstall makeInstall nvChad startup premissions alias fonts
+install: appInstall makeInstall nvChad startup alias fonts
 	echo "Success" > install
+
+clean:
+	rm -f install appInstall makeInstall nvChad startup fonts
+	rm -rf $(user_home)/.config/nvim $(user_home)/.local/share/nvim /root/.config/nvim
 
 appInstall:
 	./appInstall.sh
+	adduser $(user) libvirt
 	./cloudflareWarp.sh
 	echo "Success" > appInstall
 
@@ -14,11 +19,12 @@ makeInstall: appInstall
 	cd dmenu && $(MAKE) clean install
 	cd slstatus && $(MAKE) clean install
 	echo "Success" > makeInstall
-
+	
 nvChad: appInstall
 	cd neovim && $(MAKE) CMAKE_BUILD_TYPE=Release && sudo make install
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb && sudo dpkg -i ripgrep_13.0.0_amd64.deb
 	git clone https://github.com/NvChad/NvChad $(user_home)/.config/nvim --depth 1
+	chown -R $(user):$(user) $(user_home)/.config/nvim
 	mkdir -p /root/.config
 	sudo ln -s $(user_home)/.config/nvim /root/.config
 	echo "Success" > nvChad
@@ -29,17 +35,12 @@ startup:
 	feh --bg-fill ./IMG_20230802_151507.jpg
 	echo "Success" > startup
 
-premissions:
-	sudo chown -R $(user):$(user) $(user_home)
-	sudo adduser $(user) libvirt
-	echo "Success" > premissions
-
 alias:
 	printf "%s\n" "alias sudo='sudo '" >> $(user_home)/.bashrc
 	printf "%s\n" "alias apt=nala" >> $(user_home)/.bashrc
 	printf "%s\n" "alias vim=nvim" >> $(user_home)/.bashrc
 	printf "%s\n" "alias ll='ls -lA'" >> $(user_home)/.bashrc
-	printf "%s\n" "alias la='ls -a" >> $(user_home)/.bashrc
+	printf "%s\n" "alias la='ls -a'" >> $(user_home)/.bashrc
 	echo "Success" > alias
 
 fonts: appInstall
