@@ -34,6 +34,7 @@ nvChad: appInstall
 startup:
 	cp -i .bash_profile $(user_home)/.bash_profile
 	cp -i .xinitrc $(user_home)/.xinitrc
+	cp -i autostart.sh $(user_home)/.dwm/auto_start.sh
 	feh --bg-fill ./IMG_20230802_151507.jpg
 	echo "Success" > startup
 

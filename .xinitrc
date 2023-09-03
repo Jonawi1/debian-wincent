@@ -1,3 +1,1 @@
-~/.fehbg &
-picom &
 exec dwm
