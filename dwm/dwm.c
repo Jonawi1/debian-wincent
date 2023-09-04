@@ -318,7 +318,7 @@ applyrules(Client *c)
 	/* rule matching */
 	c->iscentered = 0;
 	c->isfloating = 0;
-        c->CenterThisWindow = 0;
+  c->CenterThisWindow = 0;
 	c->tags = 0;
 	XGetClassHint(dpy, c->win, &ch);
 	class    = ch.res_class ? ch.res_class : broken;
@@ -1876,7 +1876,7 @@ tile(Monitor *m)
 		}
 
 	if (n == 1 && selmon->sel->CenterThisWindow)
-        resizeclient(selmon->sel,
+    resizeclient(selmon->sel,
                 (selmon->mw - selmon->mw * 0.5) / 2,
                 (selmon->mh - selmon->mh * 0.5) / 2,
                 selmon->mw * 0.5,
@@ -1886,7 +1886,7 @@ tile(Monitor *m)
 void
 tilewide(Monitor *m)
 {
-        unsigned int i, n, w, h, mw, mx, ty;
+  unsigned int i, n, w, h, mw, mx, ty;
 	Client *c;
 
 	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
@@ -1899,16 +1899,23 @@ tilewide(Monitor *m)
 		mw = m->ww;
 	for (i = mx = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
 		if (i < m->nmaster) {
-		        w = (mw - mx) / (MIN(n, m->nmaster) - i);
-		        resize(c, m->wx + mx, m->wy, w - (2*c->bw), (m->wh - ty) - (2*c->bw), 0);
-		        if  (mx + WIDTH(c) < m->ww)
-		                mx += WIDTH(c);
+	    w = (mw - mx) / (MIN(n, m->nmaster) - i);
+	    resize(c, m->wx + mx, m->wy, w - (2*c->bw), (m->wh - ty) - (2*c->bw), 0);
+	    if  (mx + WIDTH(c) < m->ww)
+	      mx += WIDTH(c);
 		} else {
 			h = (m->wh - ty) / (n - i);
 			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), 0);
 			if (ty + HEIGHT(c) < m->wh)
 				ty += HEIGHT(c);
 		}
+
+  if (n == 1 && selmon->sel->CenterThisWindow)
+    resizeclient(selmon->sel,
+                (selmon->mw - selmon->mw * 0.5) / 2,
+                (selmon->mh - selmon->mh * 0.5) / 2,
+                selmon->mw * 0.5,
+                selmon->mh * 0.5);
 }
 
 void
