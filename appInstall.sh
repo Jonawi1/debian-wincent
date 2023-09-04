@@ -1,7 +1,7 @@
 # See LICENSE file for copyright and license details.
 #!/bin/bash
 sudo apt-get install nala
-sudo apt purge nano
+sudo nala purge nano
 
 sudo nala install \
 	git \
@@ -31,6 +31,8 @@ sudo nala install \
 	qutebrowser \
 	feh \
 	picom \
-  gimp
+  gimp \
+  xclip \
+  zathura
 
 sudo snap install bitwarden

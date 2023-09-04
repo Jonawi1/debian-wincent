@@ -13,6 +13,7 @@ appInstall:
 	./appInstall.sh
 	adduser $(user) libvirt
 	./cloudflareWarp.sh
+	cp -i defaults.list $(user_home)/.local/applications/defaults.list
 	echo "Success" > appInstall
 
 makeInstall: appInstall
