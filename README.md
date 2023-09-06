@@ -25,6 +25,8 @@ If you for any reason need to do a reinstall run:
 - hide vacant tags
 - pertag
 - restartsig
+- tilewide
+- vanitygaps
 
 ### st
 
