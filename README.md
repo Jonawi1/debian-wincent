@@ -2,6 +2,8 @@
 
 !! Work in progress !!
 
+Update: The installation should work as expected now, but the project is still a work in progress.
+
 ## Install
 
     git clone https://github.com/Jonawi1/debian-wincent.git
