@@ -2,17 +2,25 @@
 
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
+
 install: appInstall makeInstall nvChad startup alias fonts
+	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install
 
 clean:
-	rm -f install appInstall makeInstall nvChad startup fonts
+	rm -f install appInstall makeInstall startup fonts
+
+cleanNvChad:
+	rm -f nvChad
 	rm -rf $(user_home)/.config/nvim $(user_home)/.local/share/nvim /root/.config/nvim
 
 appInstall:
 	./appInstall.sh
 	adduser $(user) libvirt
 	./cloudflareWarp.sh
+	mkdir -p $(user_home)/.local/share
+	mkdir -p $(user_home)/.local/applications
+	cp -i defaults.list $(user_home)/.local/applications/defaults.list
 	echo "Success" > appInstall
 
 makeInstall: appInstall
@@ -22,7 +30,7 @@ makeInstall: appInstall
 	cd slstatus && $(MAKE) clean install
 	echo "Success" > makeInstall
 	
-nvChad: appInstall
+nvChad: 
 	cd neovim && $(MAKE) CMAKE_BUILD_TYPE=Release && sudo make install
 	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb && sudo dpkg -i ripgrep_13.0.0_amd64.deb
 	git clone https://github.com/NvChad/NvChad $(user_home)/.config/nvim --depth 1
@@ -34,7 +42,8 @@ nvChad: appInstall
 startup:
 	cp -i .bash_profile $(user_home)/.bash_profile
 	cp -i .xinitrc $(user_home)/.xinitrc
-	feh --bg-fill ./IMG_20230802_151507.jpg
+	mkdir -p $(user_home)/.dwm/
+	cp -i autostart.sh $(user_home)/.dwm/autostart.sh
 	echo "Success" > startup
 
 alias:
