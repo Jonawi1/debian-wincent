@@ -31,8 +31,9 @@ sudo nala install \
 	qutebrowser \
 	feh \
 	picom \
-  gimp \
-  xclip \
-  zathura
+	gimp \
+	xclip \
+	zathura \
+	npm
 
 sudo snap install bitwarden
