@@ -6,10 +6,10 @@ Update: The installation should work as expected now, but the project is still a
 
 ## Install
 ### Dependencies
-
     git
     make
 
+### Instructions
     git clone https://github.com/Jonawi1/debian-wincent.git
     cd debian-wincent
     sudo make
