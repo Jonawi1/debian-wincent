@@ -3,7 +3,7 @@
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 
-install: appInstall makeInstall nvChad startup alias fonts
+install: appInstall makeInstall startup alias fonts
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install
 
