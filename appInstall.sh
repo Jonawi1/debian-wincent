@@ -34,6 +34,7 @@ sudo nala install \
 	gimp \
 	xclip \
 	zathura \
-	npm
+	npm \
+	neovim
 
 sudo snap install bitwarden
