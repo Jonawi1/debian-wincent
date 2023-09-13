@@ -55,7 +55,6 @@ alias:
 	echo "Success" > alias
 
 fonts: appInstall
-	mkdir -p $(user_home)/.fonts/JetBrainsMono
-	wget -P $(user_home)/.fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/JetBrainsMono.zip
-	unzip -d $(user_home)/.fonts/JetBrainsMono $(user_home)/.fonts/JetBrainsMono.zip
+	mkdir -p $(user_home)/.fonts/FiraCode
+	unzip Fira_Code_v6.2.zip -d $(user_home)/.fonts/FiraCode
 	echo "Success" > fonts
