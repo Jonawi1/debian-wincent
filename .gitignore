@@ -1,5 +1,7 @@
 alias
-appInstall
+basePackages
+addisionalPackages
+warp
 makeInstall
 fonts
 install
