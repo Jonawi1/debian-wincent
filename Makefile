@@ -12,8 +12,8 @@ basePackages:
 	nala purge nano -y
 	nala install build-essential libx11-dev x11-utils x11-xserver-utils \
 		libxft-dev libxinerama-dev libxrandr-dev xorg curl unzip \
-		python3-venv libvirt-daemon-system qutebrowser feh picom gimp \
-		xclip zathura npm neovim -y
+		python3 python3-venv libvirt-daemon-system qutebrowser feh \
+		picom gimp xclip zathura npm pip nodejs cargo -y
 	mkdir -p $(user_home)/.local/share/applications
 	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
 	echo "Success" > basePackages
@@ -56,18 +56,14 @@ warp:
 	./cloudflareWarp.sh
 	echo "Success" > warp
 
-nvChad: 
-	cd neovim && $(MAKE) CMAKE_BUILD_TYPE=Release && sudo make install
-	curl -LO https://github.com/BurntSushi/ripgrep/releases/download/13.0.0/ripgrep_13.0.0_amd64.deb && sudo dpkg -i ripgrep_13.0.0_amd64.deb
-	git clone https://github.com/NvChad/NvChad $(user_home)/.config/nvim --depth 1
-	chown -R $(user):$(user) $(user_home)/.config/nvim
-	mkdir -p /root/.config
-	sudo ln -s $(user_home)/.config/nvim /root/.config
-	echo "Success" > nvChad
+nvim:
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+	chmod u+x nvim.appimage
+	./nvim.appimage --appimage-extract
+	mv squashfs-root /
+	ln -s /squashfs-root/AppRun /usr/bin/nvim
+	echo "Success" > nvim
 
 clean:
-	rm -f install basePackages addisionalPackages makeInstall startup fonts warp
-
-cleanNvChad:
-	rm -f nvChad
-	rm -rf $(user_home)/.config/nvim $(user_home)/.local/share/nvim /root/.config/nvim
+	rm -f install basePackages addisionalPackages makeInstall startup fonts warp nvim
+	rm -rf /squashfs-root
