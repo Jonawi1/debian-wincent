@@ -3,7 +3,7 @@
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 
-install: basePackages makeInstall startup alias fonts
+install: basePackages makeInstall startup alias fonts nvim
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install
 
@@ -66,4 +66,5 @@ nvim:
 
 clean:
 	rm -f install basePackages addisionalPackages makeInstall startup fonts warp nvim
+	rm -f /usr/bin/nvim
 	rm -rf /squashfs-root
