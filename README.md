@@ -2,8 +2,6 @@
 
 !! Work in progress !!
 
-Update: The installation should work as expected now, but the project is still a work in progress.
-
 ## Install
 ### Dependencies
     git
