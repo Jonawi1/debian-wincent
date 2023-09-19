@@ -13,7 +13,7 @@ basePackages:
 	nala install build-essential libx11-dev x11-utils x11-xserver-utils \
 		libxft-dev libxinerama-dev libxrandr-dev xorg curl unzip \
 		python3 python3-venv libvirt-daemon-system qutebrowser feh \
-		picom gimp xclip zathura npm pip nodejs cargo -y
+		picom gimp xclip zathura npm pip nodejs cargo ripgrep -y
 	mkdir -p $(user_home)/.local/share/applications
 	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
 	echo "Success" > basePackages
@@ -56,13 +56,19 @@ warp:
 	./cloudflareWarp.sh
 	echo "Success" > warp
 
-nvim:
+nvim: #remove?
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	chmod u+x nvim.appimage
 	./nvim.appimage --appimage-extract
 	mv squashfs-root /
 	ln -s /squashfs-root/AppRun /usr/bin/nvim
 	echo "Success" > nvim
+
+resolveEACCES:
+	mkdir $(user_home)/.npm-global
+	npm config set prefix '$(user_home)/.npm-global'
+	printf "%s\n" "export PATH=~/.npm-global/bin:$$PATH" >> $(user_home)/.profile
+	#/bin/bash source $(user_home)/.profile
 
 clean:
 	rm -f install basePackages addisionalPackages makeInstall startup fonts warp nvim
