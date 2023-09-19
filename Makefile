@@ -22,7 +22,7 @@ addisionalPackages:
 	nala install snapd timeshift ninja-build gettext cmake qemu-utils \
 		qemu-system qemu-system-x86 virt-manager ovmf -y
 	snap install bitwarden
-	#adduser $(user) libvirt
+	# adduser $(user) libvirt
 	echo "Success" > addisionalPackages
 
 makeInstall:
@@ -56,7 +56,7 @@ warp:
 	./cloudflareWarp.sh
 	echo "Success" > warp
 
-nvim: #remove?
+nvim: 
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	chmod u+x nvim.appimage
 	./nvim.appimage --appimage-extract
@@ -64,11 +64,12 @@ nvim: #remove?
 	ln -s /squashfs-root/AppRun /usr/bin/nvim
 	echo "Success" > nvim
 
-resolveEACCES:
+resolveEACCES: # not done
 	mkdir $(user_home)/.npm-global
 	npm config set prefix '$(user_home)/.npm-global'
 	printf "%s\n" "export PATH=~/.npm-global/bin:$$PATH" >> $(user_home)/.profile
 	#/bin/bash source $(user_home)/.profile
+	echo "Success" > resolveEACCES
 
 clean:
 	rm -f install basePackages addisionalPackages makeInstall startup fonts warp nvim

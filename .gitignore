@@ -8,3 +8,4 @@ install
 startup
 nvim
 nvim.appimage
+resolveEACCES
