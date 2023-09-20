@@ -71,7 +71,14 @@ resolveEACCES: # not done
 	#/bin/bash source $(user_home)/.profile
 	echo "Success" > resolveEACCES
 
+swipl:
+	nala install snapd -y
+	snap install swi-prolog
+	snap alias swi-prolog.swipl swipl
+	snap alias swi-prolog.swipl-win swipl-win
+	echo "Success" > swipl
+
 clean:
-	rm -f install basePackages addisionalPackages makeInstall startup fonts warp nvim
+	rm -f install basePackages addisionalPackages makeInstall startup fonts warp nvim swipl
 	rm -f /usr/bin/nvim
 	rm -rf /squashfs-root
