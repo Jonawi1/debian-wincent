@@ -1,9 +1,9 @@
 # See LICENSE file for copyright and license details.
-
+SHELL := /bin/bash
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 
-install: basePackages makeInstall startup alias fonts nvim
+install: basePackages makeInstall startup alias fonts nvim lunarvim
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install
 
@@ -64,12 +64,17 @@ nvim:
 	ln -s /squashfs-root/AppRun /usr/bin/nvim
 	echo "Success" > nvim
 
-resolveEACCES: # not done
-	mkdir $(user_home)/.npm-global
-	npm config set prefix '$(user_home)/.npm-global'
-	printf "%s\n" "export PATH=~/.npm-global/bin:$$PATH" >> $(user_home)/.profile
-	#/bin/bash source $(user_home)/.profile
+resolveEACCES: # Not done, DO NOT USE
+	nala install -y ca-certificates curl gnupg
+	mkdir -p /etc/apt/keyrings
+	curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
+	echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+	sudo nala update
+	sudo nala install nodejs -y
 	echo "Success" > resolveEACCES
+
+lunarvim:
+	LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 
 swipl:
 	nala install snapd -y
@@ -79,6 +84,6 @@ swipl:
 	echo "Success" > swipl
 
 clean:
-	rm -f install basePackages addisionalPackages makeInstall startup fonts warp nvim swipl
+	rm -f install basePackages addisionalPackages makeInstall startup fonts warp nvim swipl lunarvim
 	rm -f /usr/bin/nvim
 	rm -rf /squashfs-root
