@@ -13,7 +13,7 @@ basePackages:
 	nala install build-essential libx11-dev x11-utils x11-xserver-utils \
 		libxft-dev libxinerama-dev libxrandr-dev xorg curl unzip \
 		python3 python3-venv libvirt-daemon-system qutebrowser feh \
-		picom gimp xclip zathura npm pip nodejs cargo ripgrep -y
+		picom gimp xclip zathura npm pip nodejs cargo ripgrep neofetch -y
 	mkdir -p $(user_home)/.local/share/applications
 	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
 	echo "Success" > basePackages

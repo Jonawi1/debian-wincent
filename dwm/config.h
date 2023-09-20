@@ -18,11 +18,11 @@ static const char col_gray3[]       = "#bbbbbb";
 static const char col_gray4[]       = "#eeeeee";
 static const char col_cyan[]        = "#005577";
 static const unsigned int baralpha = 0xd0;
-static const unsigned int borderalpha = OPAQUE;
+static const unsigned int borderalpha = 0xd0; // default OPAQUE
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { "#e7e5df", "#221627", "#221627" },
-	[SchemeSel]  = { "#e7e5df", "#212331",  "#db504a"  },
+	[SchemeNorm] = { "#e7e5df", "#221627", "#0e0e14" },
+	[SchemeSel]  = { "#ffffff", "#388697",  "#db504a"  },
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
