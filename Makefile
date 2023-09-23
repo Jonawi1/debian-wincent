@@ -3,37 +3,32 @@ SHELL := /bin/bash
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 
-install: basePackages makeInstall startup alias fonts nvim lunarvim
+install: basePackages suckless alias nvim
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install
 
 basePackages:
 	apt-get install nala -y
 	nala purge nano -y
-	nala install build-essential libx11-dev x11-utils x11-xserver-utils \
-		libxft-dev libxinerama-dev libxrandr-dev xorg curl unzip \
-		python3 python3-venv libvirt-daemon-system qutebrowser feh \
-		picom gimp xclip zathura npm pip nodejs cargo ripgrep neofetch -y
-	mkdir -p $(user_home)/.local/share/applications
-	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
+	nala install curl unzip qutebrowser feh picom xclip -y
 	echo "Success" > basePackages
 
 addisionalPackages:
-	nala install snapd timeshift ninja-build gettext cmake ovmf -y
+	nala install snapd timeshift ninja-build gettext cmake x11-utils x11-xserver-utils \
+		libxrandr-dev python3-full gimp zathura npm pip nodejs cargo ripgrep neofetch-y
+	mkdir -p $(user_home)/.local/share/applications
+	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
 	snap install bitwarden
 	# adduser $(user) libvirt
 	echo "Success" > addisionalPackages
 
-qemu-kvm:
-	nala install qemu-system libvirt-daemon-system virt-manager ovmf -y
-	echo "Success" > qemu-kvm
-
-makeInstall:
+suckless: startup fonts
+	nala install build-essential libx11-dev libxft-dev libxinerama-dev xorg -y
 	cd dwm && $(MAKE) clean install
 	cd st && $(MAKE) clean install
 	cd dmenu && $(MAKE) clean install
 	cd slstatus && $(MAKE) clean install
-	echo "Success" > makeInstall
+	echo "Success" > suckless
 	
 startup:
 	cp -i configFiles/.bash_profile $(user_home)/.bash_profile
@@ -67,7 +62,7 @@ nvim:
 	ln -s /squashfs-root/AppRun /usr/bin/nvim
 	echo "Success" > nvim
 
-resolveEACCES: # Not done, DO NOT USE
+resolveEACCES: # Not done
 	nala install -y ca-certificates curl gnupg
 	mkdir -p /etc/apt/keyrings
 	curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
@@ -76,8 +71,12 @@ resolveEACCES: # Not done, DO NOT USE
 	sudo nala install nodejs -y
 	echo "Success" > resolveEACCES
 
-lunarvim:
+lunarvim: # depricated ?
 	LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
+
+qemu-kvm:
+	nala install qemu-system libvirt-daemon-system virt-manager ovmf -y
+	echo "Success" > qemu-kvm
 
 swipl:
 	nala install snapd -y
@@ -87,6 +86,6 @@ swipl:
 	echo "Success" > swipl
 
 clean:
-	rm -f install basePackages addisionalPackages makeInstall startup fonts warp nvim swipl lunarvim
+	rm -f install basePackages addisionalPackages suckless startup fonts warp nvim swipl lunarvim qemu-kvm
 	rm -f /usr/bin/nvim
 	rm -rf /squashfs-root
