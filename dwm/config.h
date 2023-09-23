@@ -10,8 +10,8 @@ static const unsigned int gappov    = 10;       /* vert outer gap between window
 static       int smartgaps          = 1;        /* 1 means no outer gap when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "FiraCode:size=10" };
-static const char dmenufont[]       = "FiraCode:size=10";
+static const char *fonts[]          = { "FiraCode:size=16" };
+static const char dmenufont[]       = "FiraCode:size=16";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -26,7 +26,7 @@ static const char *colors[][3]      = {
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
-    [SchemeNorm] = { OPAQUE, baralpha, borderalpha },
+	[SchemeNorm] = { OPAQUE, baralpha, borderalpha },
 	[SchemeSel]  = { OPAQUE, baralpha, borderalpha },
 };
 
@@ -39,10 +39,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     iscentered  isfloating  CenterThisWindow?   monitor */
-  { "st",       NULL,       NULL,       0,            0,          0,          1,                  -1 },
-  { "Bitwarden",NULL,       NULL,       0,            0,          0,          1,                  -1 },
+	{ "st",       NULL,       NULL,       0,            0,          0,          1,                  -1 },
+	{ "Bitwarden",NULL,       NULL,       0,            0,          0,          1,                  -1 },
 	{ "Gimp",     NULL,       NULL,       0,            0,          0,          0,                  -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,          0,          0,                  -1 },
+	{ "Firefox",  NULL,       NULL,       1 << 1,       0,          0,          0,                  -1 },
 };
 
 /* layout(s) */
@@ -91,15 +91,11 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-  { MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
-  { MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_j,      movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_k,      movestack,      {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,                       XK_c,      killclient,     {0} },
-	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[3]} },
-	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[0]} },
+	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -109,8 +105,8 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 
-  { MODKEY,                       XK_q,      spawn,          SHCMD("qutebrowser") },
-  { MODKEY,                       XK_b,      spawn,          SHCMD("bitwarden") },
+	{ MODKEY,                       XK_f,      spawn,          SHCMD("firefox") },
+	{ MODKEY,                       XK_b,      spawn,          SHCMD("bitwarden") },
 
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
@@ -122,7 +118,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      exitdwm,       {0} },
-  { MODKEY|ControlMask|ShiftMask, XK_q,      quit,          {1} },
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,          {1} },
 };
 
 /* button definitions */
