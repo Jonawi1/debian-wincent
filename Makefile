@@ -19,11 +19,14 @@ basePackages:
 	echo "Success" > basePackages
 
 addisionalPackages:
-	nala install snapd timeshift ninja-build gettext cmake qemu-utils \
-		qemu-system qemu-system-x86 virt-manager ovmf -y
+	nala install snapd timeshift ninja-build gettext cmake ovmf -y
 	snap install bitwarden
 	# adduser $(user) libvirt
 	echo "Success" > addisionalPackages
+
+qemu-kvm:
+	nala install qemu-system libvirt-daemon-system virt-manager ovmf -y
+	echo "Success" > qemu-kvm
 
 makeInstall:
 	cd dwm && $(MAKE) clean install

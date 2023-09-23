@@ -10,3 +10,4 @@ nvim
 nvim.appimage
 resolveEACCES
 swipl
+qemu-kvm
