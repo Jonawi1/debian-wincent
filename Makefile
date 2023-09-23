@@ -6,6 +6,7 @@ user_home = $$(getent passwd $(user) | cut -d: -f6)
 install: basePackages suckless alias nvim
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install
+	echo "Now reboot to complete the installation"
 
 basePackages:
 	apt-get install nala -y
@@ -15,7 +16,7 @@ basePackages:
 
 addisionalPackages:
 	nala install snapd timeshift ninja-build gettext cmake x11-utils x11-xserver-utils \
-		libxrandr-dev python3-full gimp zathura npm pip nodejs cargo ripgrep neofetch-y
+		python3-full gimp zathura npm pip nodejs cargo ripgrep neofetch-y
 	mkdir -p $(user_home)/.local/share/applications
 	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
 	snap install bitwarden
