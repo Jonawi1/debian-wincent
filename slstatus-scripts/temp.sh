@@ -1,16 +1,18 @@
 #/bin/sh
 
-TEMP=/sys/class/thermal/thermal_zone0/temp
+TEMP_FILE=/sys/class/thermal/thermal_zone0/temp
 
-if ! [ -f $TEMP ]; then
+if ! [ -f $TEMP_FILE ]; then
 	exit
 fi
 
-for x in $(cat $TEMP);
+TEMP=$(cat $TEMP_FILE | awk '{print $0 / 1000}')
+
+for x in $TEMP;
 do
 	case $x in
-		100|9[0-9]|8[0-9]) 	echo " $(cat $TEMP)󰔄!" ;;
-		*)			echo " $(cat $TEMP)󰔄" ;;
+		1[0-9][0-9]|9[0-9]|8[0-9]) 	echo " / $TEMP󰔄!" ;;
+		*)				echo " / $TEMP󰔄" ;;
 	esac
 done
 
