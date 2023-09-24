@@ -11,7 +11,7 @@ install: basePackages suckless alias nvim
 basePackages:
 	apt-get install nala -y
 	nala purge nano -y
-	nala install curl unzip firefox-esr feh picom xclip -y
+	nala install curl unzip firefox feh picom xclip -y
 	echo "Success" > basePackages
 
 addisionalPackages:
@@ -48,7 +48,7 @@ alias:
 
 fonts:
 	mkdir -p $(user_home)/.fonts/FiraCode
-	unzip Fira_Code_v6.2.zip -d $(user_home)/.fonts/FiraCode
+	unzip FiraCode.zip -d $(user_home)/.fonts/FiraCode
 	echo "Success" > fonts
 
 warp:
