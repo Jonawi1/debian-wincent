@@ -65,14 +65,14 @@ static const char unknown_str[] = "";
  */
 static const struct arg args[] = {
 	/* function		format			argument */
-	{ temp,			"| TEMP %s󰔄 | ",	"/sys/class/thermal/thermal_zone0/temp" },
-	{ cpu_perc,		"CPU%3s% | ",		NULL 					},
+	{ cpu_perc,		"| CPU%3s%%",		NULL 					},
+	{ run_command,		"%s | ",		"/slstatus-scripts/temp.sh"		},
 	{ ram_perc,		"RAM%3s% | ",		NULL 					},
 //	{ swap_perc,		"[SWAP%3s%] ",		NULL 					},
 //	{ netspeed_rx,		"[NET↓%8s,",		"enp1s0"				},
 //	{ netspeed_tx,		"↑%8s] ",		"enp1s0"				},
 	{ run_command,		"%s",			"/slstatus-scripts/volume.sh"		},
 	{ run_command,		"%s",			"/slstatus-scripts/brightness.sh"	},
-	{ datetime,		"%s |",		"%F %T"					},
+	{ datetime,		"%s |",			"%F %T"					},
 	{ run_command,		"%s",			"/slstatus-scripts/battery.sh"		},
 };
