@@ -63,10 +63,11 @@ static const Layout layouts[] = {
 	{ "[M]",      monocle },
 };
 
-/* If you use amixer, use this instead. Thanks go to DaniOrt3ga. */
-static const char *upvol[]      = { "/usr/bin/amixer",  "set", "Master", "5%+", NULL };
-static const char *downvol[]    = { "/usr/bin/amixer",  "set", "Master", "5%-", NULL };
-static const char *mutevol[]    = { "/usr/bin/amixerl", "set", "Master", "toggle", NULL };
+/* If you use pipewire add somewhere in your constants definition section. Use "wpctl status" to
+   find out the real sink ID, 0 is a placeholder here. */
+static const char *upvol[]      = { "/usr/bin/wpctl",   "set-volume", "39",      "5%+",      NULL };
+static const char *downvol[]    = { "/usr/bin/wpctl",   "set-volume", "39",      "5%-",      NULL };
+static const char *mutevol[]    = { "/usr/bin/wpctl",   "set-mute",   "39",      "toggle",   NULL };
 
 /* To use light add this to the constant definition section. Thanks Hritik14. */
 static const char *light_up[]   = { "/usr/bin/light",   "-A", "5", NULL };

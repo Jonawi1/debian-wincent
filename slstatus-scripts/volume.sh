@@ -1,6 +1,7 @@
 #/bin/sh
 
-VOL=$(amixer sget Master | tail -1 | awk '{print $4 $5}' | grep -o -P '(?<=\[).*(?=%)')
+ID=39
+VOL=$(wpctl get-volume $ID | awk '{print $2 * 100}')
 
 for x in $VOL;
 do

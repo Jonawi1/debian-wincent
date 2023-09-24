@@ -11,7 +11,7 @@ install: basePackages suckless alias nvim
 basePackages:
 	apt-get install nala -y
 	nala purge nano -y
-	nala install curl unzip firefox feh picom xclip -y
+	nala install curl unzip firefox-esr feh picom xclip wireplumber -y
 	echo "Success" > basePackages
 
 addisionalPackages:
