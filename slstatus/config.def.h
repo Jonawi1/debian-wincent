@@ -64,15 +64,15 @@ static const char unknown_str[] = "n/a";
  * wifi_perc           WiFi signal in percent          interface name (wlan0)
  */
 static const struct arg args[] = {
-	/* function		format		argument */
-	{ temp,			" [TEMP %sC] ",	"/sys/class/thermal/thermal_zone0/temp" },
-	{ cpu_perc,		"[CPU%3s%] ",	NULL 		},
-	{ ram_perc,		"[RAM%3s%] ",	NULL 		},
-//	{ swap_perc,		"[SWAP%3s%] ",	NULL 		},
-//	{ netspeed_rx,		"[NET↓%8s,",	"enp1s0"	},
-//	{ netspeed_tx,		"↑%8s] ",	"enp1s0"	},
-	{ run_command,		"%6s",		"/volume.sh"	},
-	{ run_command,		"%6s",		"/brightness.sh"},
-	{ datetime,		"%s ",		"%F %T"		},
-	{ run_command,		"%6s",		"/battery.sh"	},
+	/* function		format			argument */
+	{ temp,			"| TEMP %sC | ",	"/sys/class/thermal/thermal_zone0/temp" },
+	{ cpu_perc,		"CPU%3s% | ",		NULL 		},
+	{ ram_perc,		"RAM%3s% | ",		NULL 		},
+//	{ swap_perc,		"[SWAP%3s%] ",		NULL 		},
+//	{ netspeed_rx,		"[NET↓%8s,",		"enp1s0"	},
+//	{ netspeed_tx,		"↑%8s] ",		"enp1s0"	},
+	{ run_command,		"%6s| ",		"/volume.sh"	},
+	{ run_command,		"%6s| ",		"/brightness.sh"},
+	{ datetime,		"%s | ",		"%F %T"		},
+	{ run_command,		"%6s|",			"/battery.sh"	},
 };
