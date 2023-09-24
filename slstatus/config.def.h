@@ -4,7 +4,7 @@
 const unsigned int interval = 1000;
 
 /* text to show if no value can be retrieved */
-static const char unknown_str[] = "n/a";
+static const char unknown_str[] = "";
 
 /* maximum output string length */
 #define MAXLEN 2048
@@ -65,14 +65,14 @@ static const char unknown_str[] = "n/a";
  */
 static const struct arg args[] = {
 	/* function		format			argument */
-	{ temp,			"| TEMP %sC | ",	"/sys/class/thermal/thermal_zone0/temp" },
-	{ cpu_perc,		"CPU%3s% | ",		NULL 		},
-	{ ram_perc,		"RAM%3s% | ",		NULL 		},
-//	{ swap_perc,		"[SWAP%3s%] ",		NULL 		},
-//	{ netspeed_rx,		"[NET↓%8s,",		"enp1s0"	},
-//	{ netspeed_tx,		"↑%8s] ",		"enp1s0"	},
-	{ run_command,		"%6s| ",		"/volume.sh"	},
-	{ run_command,		"%6s| ",		"/brightness.sh"},
-	{ datetime,		"%s | ",		"%F %T"		},
-	{ run_command,		"%6s|",			"/battery.sh"	},
+	{ temp,			"| TEMP %s󰔄 | ",	"/sys/class/thermal/thermal_zone0/temp" },
+	{ cpu_perc,		"CPU%3s% | ",		NULL 					},
+	{ ram_perc,		"RAM%3s% | ",		NULL 					},
+//	{ swap_perc,		"[SWAP%3s%] ",		NULL 					},
+//	{ netspeed_rx,		"[NET↓%8s,",		"enp1s0"				},
+//	{ netspeed_tx,		"↑%8s] ",		"enp1s0"				},
+	{ run_command,		"%s",			"/slstatus-scripts/volume.sh"		},
+	{ run_command,		"%s",			"/slstatus-scripts/brightness.sh"	},
+	{ datetime,		"%s |",		"%F %T"					},
+	{ run_command,		"%s",			"/slstatus-scripts/battery.sh"		},
 };
