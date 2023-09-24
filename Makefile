@@ -36,7 +36,7 @@ startup:
 	cp -i configFiles/.xinitrc $(user_home)/.xinitrc
 	mkdir -p $(user_home)/.dwm/
 	cp -i configFiles/autostart.sh $(user_home)/.dwm/autostart.sh
-	cp -i -r slstatus-scripts/ /slstatus-scripts/
+	cp -i -r slstatus-scripts/ /
 	echo "Success" > startup
 
 alias:
