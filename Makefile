@@ -3,7 +3,7 @@ SHELL := /bin/bash
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 
-install: basePackages suckless alias nvim
+install: basePackages suckless alias nvim-wincent
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install
 	echo "Now reboot to complete the installation"
@@ -56,13 +56,18 @@ warp:
 	./cloudflareWarp.sh
 	echo "Success" > warp
 
-nvim: 
+nvim:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	chmod u+x nvim.appimage
 	./nvim.appimage --appimage-extract
 	mv squashfs-root /
 	ln -s /squashfs-root/AppRun /usr/bin/nvim
 	echo "Success" > nvim
+
+nvim-wincent: nvim
+	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+		$(user_home)/.local/share/nvim/site/pack/packer/start/packer.nvim
+	echo "Success" > nvim-wincent
 
 resolveEACCES: # Not done
 	nala install -y ca-certificates curl gnupg

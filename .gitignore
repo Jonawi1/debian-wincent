@@ -11,3 +11,4 @@ nvim.appimage
 resolveEACCES
 swipl
 qemu-kvm
+nvim-wincent
