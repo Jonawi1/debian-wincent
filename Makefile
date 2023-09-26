@@ -92,6 +92,9 @@ swipl:
 	snap alias swi-prolog.swipl-win swipl-win
 	echo "Success" > swipl
 
+valgrind:
+	nala install valgrind -y
+
 clean:
 	rm -f install basePackages addisionalPackages suckless startup fonts warp nvim swipl lunarvim qemu-kvm
 	rm -f /usr/bin/nvim
