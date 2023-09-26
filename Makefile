@@ -99,3 +99,4 @@ clean:
 	rm -f install basePackages addisionalPackages suckless startup fonts warp nvim swipl lunarvim qemu-kvm
 	rm -f /usr/bin/nvim
 	rm -rf /squashfs-root
+	rm -rf $(user_home)/.local/share/nvim/site/pack/packer/start/packer.nvim
