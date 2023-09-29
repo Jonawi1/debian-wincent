@@ -50,6 +50,15 @@
     num_sym (tap-next @sym @num)
 )
 
+(deflayer qwerty-mod
+    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10      f11     f12            @qwe    @col    XX
+    grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
+    tab     q       w       e       r       t       y       u       i       o       p       [       ]       ret     del     end     pgdn
+    caps    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8 '       \
+    XX      102d    z       x       c       v       b       n       m       ,       .       /       XX                      up
+    XX      XX      XX                      spc                             XX      rmet  @num_sym  XX              left    down    rght
+)
+
 (deflayer qwerty
     esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10      f11     f12            XX      @col    @qwm
     grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
@@ -57,15 +66,6 @@
     caps    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8 '       \
     lsft    102d    z       x       c       v       b       n       m       ,       .       /       rsft                    up
     lctl    lmet    lalt                    spc                             ralt    rmet  @num_sym  rctl            left    down    rght
-)
-
-(deflayer qwerty-mod
-    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10      f11     f12            @qwe    @col    @qwm
-    grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
-    tab     q       w       e       r       t       y       u       i       o       p       [       ]       ret     del     end     pgdn
-    caps    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8 '       \
-    XX      102d    z       x       c       v       b       n       m       ,       .       /       XX                      up
-    XX      XX      XX                      spc                             XX      rmet  @num_sym  XX              left    down    rght
 )
 
 (deflayer colemak-dh
