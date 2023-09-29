@@ -66,9 +66,6 @@ nvim:
 nvim-wincent: nvim
 	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 		$(user_home)/.local/share/nvim/site/pack/packer/start/packer.nvim
-	mkdir -p $(user_home)/.config
-	git clone git@github.com:jonwin1/nvim-wincent
-	mv nvim-wincent $(user_home)/.config/nvim
 	echo "Success" > nvim-wincent
 
 resolveEACCES: # Not done
