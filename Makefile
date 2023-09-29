@@ -10,7 +10,6 @@ install: basePackages suckless alias nvim-wincent
 
 basePackages:
 	apt-get install nala -y
-	nala purge nano -y
 	nala install curl unzip firefox-esr feh picom xclip wireplumber light -y
 	echo "Success" > basePackages
 
@@ -43,7 +42,7 @@ alias:
 	printf "%s\n" "alias sudo='sudo '" >> $(user_home)/.bashrc
 	printf "%s\n" "alias apt=nala" >> $(user_home)/.bashrc
 	printf "%s\n" "alias vim=nvim" >> $(user_home)/.bashrc
-	printf "%s\n" "alias ll='ls -lA'" >> $(user_home)/.bashrc
+	printf "%s\n" "alias ll='ls -lhA'" >> $(user_home)/.bashrc
 	printf "%s\n" "alias la='ls -a'" >> $(user_home)/.bashrc
 	echo "Success" > alias
 
@@ -67,6 +66,9 @@ nvim:
 nvim-wincent: nvim
 	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 		$(user_home)/.local/share/nvim/site/pack/packer/start/packer.nvim
+	mkdir -p $(user_home)/.config
+	git clone git@github.com:jonwin1/nvim-wincent
+	mv nvim-wincent $(user_home)/.config/nvim
 	echo "Success" > nvim-wincent
 
 resolveEACCES: # Not done
@@ -77,9 +79,6 @@ resolveEACCES: # Not done
 	sudo nala update
 	sudo nala install nodejs -y
 	echo "Success" > resolveEACCES
-
-lunarvim: # depricated ?
-	LV_BRANCH='release-1.3/neovim-0.9' bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/release-1.3/neovim-0.9/utils/installer/install.sh)
 
 qemu-kvm:
 	nala install qemu-system libvirt-daemon-system virt-manager ovmf -y
