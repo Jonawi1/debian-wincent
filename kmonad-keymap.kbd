@@ -1,0 +1,72 @@
+(defcfg
+  ;; For Linux
+  input  (device-file "/dev/input/by-id/usb-Logitech_PRO_Gaming_Keyboard_076D31413931-event-kbd")
+  output (uinput-sink "My KMonad output"
+    ;; To understand the importance of the following line, see the section on
+    ;; Compose-key sequences at the near-bottom of this file.
+    "/run/current-system/sw/bin/sleep 1 && /run/current-system/sw/bin/setxkbmap -option compose:ralt")
+  cmp-seq ralt    ;; Set the compose key to `RightAlt'
+  cmp-seq-delay 5 ;; 5ms delay between each compose-key sequence press
+
+  fallthrough true
+)
+
+(defsrc
+    q       w       e       r       t       y       u       i       o       p       ssrq slck
+    a       s       d       f       g       h       j       k       l       ;
+    102d    z       x       c       v       b       n       m       cmp
+)
+
+(defalias
+    met_q1 (tap-hold-next-release 200 a lmet)
+    alt_q2 (tap-hold-next-release 200 s lalt)
+    ctl_q3 (tap-hold-next-release 200 d lctl)
+    sft_q4 (tap-hold-next-release 200 f lsft)
+    
+    sft_q5 (tap-hold-next-release 200 j rsft)
+    ctl_q6 (tap-hold-next-release 200 k rctl)
+    alt_q7 (tap-hold-next-release 200 l ralt)
+    met_q8 (tap-hold-next-release 200 ; lmet)
+    
+    met_c1 (tap-hold-next-release 200 a lmet)
+    alt_c2 (tap-hold-next-release 200 r lalt)
+    ctl_c3 (tap-hold-next-release 200 s lctl)
+    sft_c4 (tap-hold-next-release 200 t lsft)
+    
+    sft_c5 (tap-hold-next-release 200 n rsft)
+    ctl_c6 (tap-hold-next-release 200 e rctl)
+    alt_c7 (tap-hold-next-release 200 i ralt)
+    met_c8 (tap-hold-next-release 200 o lmet)
+
+    col (layer-switch colemak-dh)
+    qwe (layer-switch qwerty)
+    num (layer-toggle num)
+    sym (layer-switch sym)
+
+    num_sym (tap-next @sym @num)
+)
+
+(deflayer qwerty
+    q       w       e       r       t       y       u       i       o       p       @qwe @col
+    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8
+    102d    z       x       c       v       b       n       m       @num_sym
+)
+
+(deflayer colemak-dh
+    q       w       f       p       b       j       l       u       y       ;       @qwe @col
+    @met_c1 @alt_c2 @ctl_c3 @sft_c4 g       m       @sft_c5 @ctl_c6 @alt_c7 @met_c8
+    z       x       c       d       v       102d    k       h       @num_sym
+)
+
+(deflayer num
+    [       7       8       9       ]       j       l       u       y       ;       @qwe @col
+    ;       4       5       6       =       m       n       e       i       o
+    '       1       2       3       \       102d    k       h       XX
+)
+
+(deflayer sym
+    {       &       *       \(      }       j       l       u       y       ;       @qwe @col
+    ;       $       %       ^       +       m       n       e       i       o
+    ~       !       @       #       |       102d    k       h       @qwe
+)
+    
