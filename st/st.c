@@ -1062,6 +1062,11 @@ tsetdirtattr(int attr)
 	}
 }
 
+int tisaltscr(void)
+{
+	return IS_SET(MODE_ALTSCREEN);
+}
+
 void
 tfulldirt(void)
 {
