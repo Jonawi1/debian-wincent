@@ -64,8 +64,8 @@ nvim:
 	echo "Success" > nvim
 
 nvim-wincent: nvim
-	git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-		$(user_home)/.local/share/nvim/site/pack/packer/start/packer.nvim
+	mkdir -p $(user_home)/.config
+	git clone https://github.com/jonwin1/nvim-wincent $(user_home)/.config/nvim
 	echo "Success" > nvim-wincent
 
 resolveEACCES: # Not done
@@ -94,5 +94,5 @@ valgrind:
 clean:
 	rm -f install basePackages addisionalPackages suckless startup fonts warp nvim swipl lunarvim qemu-kvm
 	rm -f /usr/bin/nvim
+	rm -rf ~/.config/nvim
 	rm -rf /squashfs-root
-	rm -rf $(user_home)/.local/share/nvim/site/pack/packer/start/packer.nvim
