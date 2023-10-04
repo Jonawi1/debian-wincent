@@ -21,6 +21,16 @@
 )
 
 (defalias
+    col (layer-switch colemak-dh)
+    qwe (layer-switch qwerty)
+    qwm (layer-switch qwerty-mod)
+    sym (layer-switch sym)
+
+    tnm (layer-toggle num)
+    nnm (around-next @tnm)
+    num (tap-hold-next-release 200 @nnm @tnm)
+    RA  (around ralt X)
+
     met_q1 (tap-hold-next-release 200 a lmet)
     alt_q2 (tap-hold-next-release 200 s ralt)
     ctl_q3 (tap-hold-next-release 200 d lctl)
@@ -31,6 +41,9 @@
     alt_q7 (tap-hold-next-release 200 l ralt)
     met_q8 (tap-hold-next-release 200 ; lmet)
     
+    num_q9 (tap-hold-next-release 200 c @tnm)
+    num_q0 (tap-hold-next-release 200 m @tnm)
+
     met_c1 (tap-hold-next-release 200 a lmet)
     alt_c2 (tap-hold-next-release 200 r ralt)
     ctl_c3 (tap-hold-next-release 200 s lctl)
@@ -41,15 +54,8 @@
     alt_c7 (tap-hold-next-release 200 i ralt)
     met_c8 (tap-hold-next-release 200 o lmet)
 
-    col (layer-switch colemak-dh)
-    qwe (layer-switch qwerty)
-    qwm (layer-switch qwerty-mod)
-    sym (layer-switch sym)
-
-    tnm (layer-toggle num)
-    nnm (around-next @tnm)
-    num (tap-hold-next-release 200 @nnm @tnm)
-    RA  (around ralt X)
+    num_c9 (tap-hold-next-release 200 d @tnm)
+    num_c0 (tap-hold-next-release 200 h @tnm)
 )
 
 (deflayer qwerty-mod
@@ -57,7 +63,7 @@
     grv     XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      bspc    ins     home    pgup
     tab     q       w       e       r       t       y       u       i       o       p       [       ]       ret     del     end     pgdn
     @num    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8 '       \
-    XX      102d    z       x       c       v       b       n       m       ,       .       /       XX                      up
+    XX      102d    z       x       @num_q9 v       b       n       @num_q0 ,       .       /       XX                      up
     XX      XX      lalt                    spc                             XX      rmet    @sym    XX              left    down    rght
 )
 
@@ -66,7 +72,7 @@
     grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
     tab     q       w       e       r       t       y       u       i       o       p       [       ]       ret     del     end     pgdn
     @num    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8 '       \
-    lsft    102d    z       x       c       v       b       n       m       ,       .       /       rsft                    up
+    lsft    102d    z       x       @num_q9 v       b       n       @num_q0 ,       .       /       rsft                    up
     lctl    lmet    lalt                    spc                             ralt    rmet    @sym    rctl            left    down    rght
 )
 
@@ -75,18 +81,31 @@
     grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
     tab     q       w       f       p       b       j       l       u       y       ;       [       ]       ret     del     end     pgdn
     @num    @met_c1 @alt_c2 @ctl_c3 @sft_c4 g       m       @sft_c5 @ctl_c6 @alt_c7 @met_c8 '       \
-    XX      z       x       c       d       v       102d    k       h       ,       .       /       XX                      up
+    XX      z       x       c       @num_c9 v       102d    k       @num_c0 ,       .       /       XX                      up
     XX      XX      lalt                    spc                             XX      rmet    @sym    XX              left    down    rght
 )
 
+;;          =       7       8       9       !       @       [       ]       \       $       €       `
+;;          +       4       5       6       ?       &       (       )       /       "       ¥       ´
+;;          0       1       2       3       #       ¡       %       {       }       ¤       £
+
 (deflayer num
     esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             @qwe    @col    @qwm
-    grv     XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      RA-=    bspc    ins     home    pgup
-    tab     S-1     S-2     S-3     S-4     S-5     S-6     S-7     S-8     S-9     S-0     S--     S-=     ret     del     end     pgdn
-    caps    1       2       3       4       5       6       7       8       9       0       -       =
-    lsft    RA-1    RA-2    RA-3    RA-4    RA-5    RA-6    RA-7    RA-8    RA-9    RA-0    RA--    rsft                    up
-    lctl    lmet    lalt                    spc                             ralt    rmet    @qwe    rctl            left    down    rght
+    grv     XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      bspc    ins     home    pgup
+    tab     S-0     7       8       9       S-1     RA-2    RA-8    RA-9    RA--    RA-4    RA-5    S-=     ret     del     end     pgdn
+    caps    -       4       5       6       S--     S-6     S-8     S-9     S-7     S-2     RA-6    =
+    XX      0       1       2       3       S-3     RA-1    S-5     RA-7    RA-0    S-4     RA-3    XX                      up  
+    XX      XX      lalt                    spc                             XX      rmet    @sym    XX              left    down    rght
 )
+
+;;(deflayer num
+;;    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             @qwe    @col    @qwm
+;;    grv     XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      bspc    ins     home    pgup
+;;    tab     S-1     S-2     S-3     S-4     S-5     S-6     S-7     S-8     S-9     S-0     S--     S-=     ret     del     end     pgdn
+;;    caps    1       2       3       4       5       6       7       8       9       0       -       =
+;;    lsft    RA-1    RA-2    RA-3    RA-4    RA-5    RA-6    RA-7    RA-8    RA-9    RA-0    RA--    rsft                    up
+;;    lctl    lmet    lalt                    spc                             ralt    rmet    @qwe    rctl            left    down    rght
+;;)
 
 (deflayer sym
     esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             @qwe    @col    @qwm
