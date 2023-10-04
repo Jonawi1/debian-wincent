@@ -22,7 +22,7 @@
 
 (defalias
     met_q1 (tap-hold-next-release 200 a lmet)
-    alt_q2 (tap-hold-next-release 200 s lalt)
+    alt_q2 (tap-hold-next-release 200 s ralt)
     ctl_q3 (tap-hold-next-release 200 d lctl)
     sft_q4 (tap-hold-next-release 200 f lsft)
     
@@ -32,7 +32,7 @@
     met_q8 (tap-hold-next-release 200 ; lmet)
     
     met_c1 (tap-hold-next-release 200 a lmet)
-    alt_c2 (tap-hold-next-release 200 r lalt)
+    alt_c2 (tap-hold-next-release 200 r ralt)
     ctl_c3 (tap-hold-next-release 200 s lctl)
     sft_c4 (tap-hold-next-release 200 t lsft)
     
@@ -44,50 +44,52 @@
     col (layer-switch colemak-dh)
     qwe (layer-switch qwerty)
     qwm (layer-switch qwerty-mod)
-    num (layer-toggle num)
     sym (layer-switch sym)
 
-    num_sym (tap-next @sym @num)
+    tnm (layer-toggle num)
+    nnm (around-next @tnm)
+    num (tap-hold-next-release 200 @nnm @tnm)
+    RA  (around ralt X)
 )
 
 (deflayer qwerty-mod
-    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10      f11     f12            @qwe    @col    XX
-    grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
+    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             @qwe    @col    XX
+    grv     XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      bspc    ins     home    pgup
     tab     q       w       e       r       t       y       u       i       o       p       [       ]       ret     del     end     pgdn
-    caps    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8 '       \
+    @num    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8 '       \
     XX      102d    z       x       c       v       b       n       m       ,       .       /       XX                      up
-    XX      XX      XX                      spc                             XX      rmet  @num_sym  XX              left    down    rght
+    XX      XX      lalt                    spc                             XX      rmet    @sym    XX              left    down    rght
 )
 
 (deflayer qwerty
-    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10      f11     f12            XX      @col    @qwm
+    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             XX      @col    @qwm
     grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
     tab     q       w       e       r       t       y       u       i       o       p       [       ]       ret     del     end     pgdn
-    caps    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8 '       \
+    @num    @met_q1 @alt_q2 @ctl_q3 @sft_q4 g       h       @sft_q5 @ctl_q6 @alt_q7 @met_q8 '       \
     lsft    102d    z       x       c       v       b       n       m       ,       .       /       rsft                    up
-    lctl    lmet    lalt                    spc                             ralt    rmet  @num_sym  rctl            left    down    rght
+    lctl    lmet    lalt                    spc                             ralt    rmet    @sym    rctl            left    down    rght
 )
 
 (deflayer colemak-dh
-    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10      f11     f12            @qwe    XX      @qwm
+    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             @qwe    XX      @qwm
     grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
     tab     q       w       f       p       b       j       l       u       y       ;       [       ]       ret     del     end     pgdn
-    caps    @met_c1 @alt_c2 @ctl_c3 @sft_c4 g       m       @sft_c5 @ctl_c6 @alt_c7 @met_c8 '       \
+    @num    @met_c1 @alt_c2 @ctl_c3 @sft_c4 g       m       @sft_c5 @ctl_c6 @alt_c7 @met_c8 '       \
     XX      z       x       c       d       v       102d    k       h       ,       .       /       XX                      up
-    XX      XX      XX                      spc                             XX      rmet  @num_sym  XX              left    down    rght
+    XX      XX      lalt                    spc                             XX      rmet    @sym    XX              left    down    rght
 )
 
 (deflayer num
-    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10      f11     f12            @qwe    @col    @qwm
-    grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
-    tab     [       7       8       9       ]       j       l       u       y       ;       [       ]       ret     del     end     pgdn
-    caps    ;       4       5       6       =       m       n       e       i       o       '       \
-    lsft    '       1       2       3       \       102d    k       h       ,       .       /       rsft                    up
+    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             @qwe    @col    @qwm
+    grv     XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      RA-=    bspc    ins     home    pgup
+    tab     S-1     S-2     S-3     S-4     S-5     S-6     S-7     S-8     S-9     S-0     S--     S-=     ret     del     end     pgdn
+    caps    1       2       3       4       5       6       7       8       9       0       -       =
+    lsft    RA-1    RA-2    RA-3    RA-4    RA-5    RA-6    RA-7    RA-8    RA-9    RA-0    RA--    rsft                    up
     lctl    lmet    lalt                    spc                             ralt    rmet    @qwe    rctl            left    down    rght
 )
 
 (deflayer sym
-    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10      f11     f12            @qwe    @col    @qwm
+    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             @qwe    @col    @qwm
     grv     1       2       3       4       5       6       7       8       9       0       -       =       bspc    ins     home    pgup
     tab     {       &       *       \(      }       j       l       u       y       ;       [       ]       ret     del     end     pgdn
     caps    ;       $       %       ^       +       m       n       e       i       o       '       \
