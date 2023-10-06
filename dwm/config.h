@@ -13,17 +13,18 @@ static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "FiraCodeNerdFont:size=16" };
 static const char dmenufont[]       = "FiraCodeNerdFont:size=16";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const char col_nfg[]     = "#e7e5df";
+static const char col_nbg[]     = "#221627";
+static const char col_nbo[]     = "#0e0e14";
+static const char col_sfg[]     = "#ffffff";
+static const char col_sbg[]     = "#388697";
+static const char col_sbo[]     = "#db504a";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = 0xd0; // default OPAQUE
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { "#e7e5df", "#221627", "#0e0e14" },
-	[SchemeSel]  = { "#ffffff", "#388697",  "#db504a"  },
+	/*               fg         bg          border  */
+	[SchemeNorm] = { col_nfg,   col_nbg,    col_nbo },
+	[SchemeSel]  = { col_sfg,   col_sbg,    col_sbo },
 };
 static const unsigned int alphas[][3]      = {
     /*               fg      bg        border*/
@@ -76,7 +77,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 /* If you use pipewire add somewhere in your constants definition section. Use "wpctl status" to
