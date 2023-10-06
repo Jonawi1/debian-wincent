@@ -851,7 +851,7 @@ tilewide(Monitor *m)
 	if (n == 1 && selmon->sel->CenterThisWindow)
     resizeclient(selmon->sel,
                 (selmon->mw - selmon->mw * 0.5) / 2,
-                (selmon->mh - selmon->mh * 0.7) / 2,
+                (selmon->mh - selmon->mh * 0.984) / 2,
                 selmon->mw * 0.5,
-                selmon->mh * 0.7);
+                selmon->mh * 0.984);
 }
