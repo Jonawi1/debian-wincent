@@ -7,7 +7,7 @@ modeline=$(cvt $width $height $refresh | sed -n 's/^\Modeline //p')
 if test -f ~/.fehbg; then
 	~/.fehbg
 else
-	feh --bg-fill debian-wincent/img/IMG_20230802_151507.jpg
+	feh --bg-fill debian-wincent/img/Wallpaper.png
 fi
 picom &
 slstatus &
