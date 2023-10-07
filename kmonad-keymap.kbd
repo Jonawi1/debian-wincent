@@ -54,9 +54,9 @@
 )
 
 (deflayer qwerty-mod
-    @q_esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             @qwe    @col    XX
+    esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     f12             @qwe    @col    XX
     XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      bspc    XX      XX      XX
-    tab     q       w       e       r       t       y       u       i       o       p       [       ]       ret     XX      XX      XX
+    tab     @q_esc  w       e       r       t       y       u       i       o       p       [       ]       ret     XX      XX      XX
     XX      @a_lmet @s_ralt @d_lctl @f_lsft g       h       @j_rsft @k_rctl @l_ralt @;_lmet '       \
     XX      @z_sym  x       c       v       b       102d    n       m       ,       .       /       XX                      XX
     XX      XX      XX                      @spc_num                        XX      XX      XX      XX              XX      XX      XX
