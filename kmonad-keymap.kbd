@@ -48,8 +48,6 @@
     i_ralt (tap-hold-next-release 200 i ralt)
     o_lmet (tap-hold-next-release 200 o lmet)
 
-    z_sym (tap-hold-next-release 200 z @sym)
-    /_sym (tap-hold-next-release 200 / @sym)
     spc_num (tap-hold-next-release 200 spc @num)
     q_esc (tap-hold-next-release 200 q esc)
 )
@@ -59,8 +57,8 @@
     XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      bspc    XX      XX      XX
     tab     @q_esc  w       e       r       t       y       u       i       o       p       [       ]       ret     XX      XX      XX
     XX      @a_lmet @s_ralt @d_lctl @f_lsft g       h       @j_rsft @k_rctl @l_ralt @;_lmet '       \
-    XX      @z_sym  x       c       v       b       102d    n       m       ,       .       @/_sym  XX                      XX
-    XX      XX      XX                      @spc_num                        XX      XX      XX      XX              XX      XX      XX
+    XX      z       x       c       v       b       102d    n       m       ,       .       /       XX                      XX
+    XX      XX      @sym                    @spc_num                        @sym    XX      XX      XX              XX      XX      XX
 )
 
 (deflayer qwerty
