@@ -41,3 +41,6 @@ If you for any reason need to do a reinstall run:
 
 ## Windows Virtual Machine with gpu passthrough
 https://quantum5.ca/2022/04/20/windows-vm-gpu-passthrough-part-1-basic-windows-vm/
+
+## other
+nntui
