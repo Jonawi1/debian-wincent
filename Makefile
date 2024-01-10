@@ -10,7 +10,7 @@ install: basePackages suckless alias nvim-wincent
 
 basePackages:
 	apt-get install nala -y
-	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes -y
+	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst -y
 	echo "Success" > basePackages
 
 addisionalPackages:
