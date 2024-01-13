@@ -1,14 +1,2 @@
-alias
-basePackages
-addisionalPackages
-warp
-suckless
-fonts
-install
-startup
-nvim
-nvim.appimage
-resolveEACCES
-swipl
-qemu-kvm
-nvim-wincent
+*_w
+*.appimage

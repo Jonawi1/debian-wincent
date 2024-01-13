@@ -3,108 +3,108 @@ SHELL := /bin/bash
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 
-install: basePackages suckless alias nvim-wincent
+install_w: basePackages_w suckless_w alias_w nvim-wincent_w
 	chown -R $(user):$(user) $(user_home)/
-	echo "Success" > install
+	echo "Success" > install_w
 	echo "Now reboot to complete the installation"
 
-basePackages:
+basePackages_w:
 	apt-get install nala -y
 	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst -y
-	echo "Success" > basePackages
+	echo "Success" > basePackages_w
 
-addisionalPackages:
+addisionalPackages_w:
 	nala install snapd timeshift ninja-build gettext cmake x11-utils x11-xserver-utils \
 		python3-full gimp zathura npm pip nodejs cargo ripgrep neofetch-y
 	mkdir -p $(user_home)/.local/share/applications
 	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
 	snap install bitwarden
 	# adduser $(user) libvirt
-	echo "Success" > addisionalPackages
+	echo "Success" > addisionalPackages_w
 
-suckless: startup fonts
+suckless_w: startup_w fonts_w
 	nala install build-essential libx11-dev libxft-dev libxinerama-dev xorg -y
 	cd dwm && $(MAKE) clean install
 	cd st && $(MAKE) clean install
 	cd dmenu && $(MAKE) clean install
 	cd slstatus && $(MAKE) clean install
 	cd wmname && $(MAKE) clean install
-	echo "Success" > suckless
+	echo "Success" > suckless_w
 	
-startup:
+startup_w:
 	cp -i configFiles/.bash_profile $(user_home)/.bash_profile
 	cp -i configFiles/.xinitrc $(user_home)/.xinitrc
 	mkdir -p $(user_home)/.dwm/
 	cp -i configFiles/autostart.sh $(user_home)/.dwm/autostart.sh
 	cp -i -r slstatus-scripts/ /
-	echo "Success" > startup
+	echo "Success" > startup_w
 
-alias:
+alias_w:
 	printf "%s\n" "alias sudo='sudo '" >> $(user_home)/.bashrc
 	printf "%s\n" "alias apt=nala" >> $(user_home)/.bashrc
 	printf "%s\n" "alias vim=nvim" >> $(user_home)/.bashrc
 	printf "%s\n" "alias ll='ls -lhA'" >> $(user_home)/.bashrc
 	printf "%s\n" "alias la='ls -a'" >> $(user_home)/.bashrc
-	echo "Success" > alias
+	echo "Success" > alias_w
 
-fonts:
+fonts_w:
 	mkdir -p $(user_home)/.fonts/FiraCode
 	unzip FiraCode.zip -d $(user_home)/.fonts/FiraCode
-	echo "Success" > fonts
+	echo "Success" > fonts_w
 
-warp:
+warp_w:
 	./cloudflareWarp.sh
-	echo "Success" > warp
+	echo "Success" > warp_w
 
-nvim:
+nvim_w:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	chmod u+x nvim.appimage
 	./nvim.appimage --appimage-extract
 	mv squashfs-root /
 	ln -s /squashfs-root/AppRun /usr/bin/nvim
-	echo "Success" > nvim
+	echo "Success" > nvim_w
 
-nvim-wincent: nvim
+nvim-wincent_w: nvim_w
 	mkdir -p $(user_home)/.config
 	git clone https://github.com/jonwin1/nvim-wincent $(user_home)/.config/nvim
-	echo "Success" > nvim-wincent
+	echo "Success" > nvim-wincent_w
 
-resolveEACCES: # Not done
+resolveEACCES_w: # Not done
 	nala install -y ca-certificates curl gnupg
 	mkdir -p /etc/apt/keyrings
 	curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
 	echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 	sudo nala update
 	sudo nala install nodejs -y
-	echo "Success" > resolveEACCES
+	echo "Success" > resolveEACCES_w
 
-qemu-kvm:
+qemu-kvm_w:
 	nala install qemu-system libvirt-daemon-system virt-manager ovmf -y
-	echo "Success" > qemu-kvm
+	echo "Success" > qemu-kvm_w
 
-swipl:
+swipl_w:
 	nala install snapd -y
 	snap install swi-prolog
 	snap alias swi-prolog.swipl swipl
 	snap alias swi-prolog.swipl-win swipl-win
-	echo "Success" > swipl
+	echo "Success" > swipl_w
 
-valgrind:
+valgrind_w:
 	nala install valgrind -y
 
-stack:
+stack_w:
 	curl -sSL https://get.haskellstack.org/ | sh
-	echo "Success" > stack
+	echo "Success" > stack_w
 
-kmonad: stack
+kmonad_w: stack_w
 	git clone https://github.com/kmonad/kmonad.git
 	cd kmonad && stack install
 	cp -i configFiles/kmonad-keymap.kbd $(user_home)/
 	echo "kmonad $(user_home)/kmonad-keymap.kbd &" > $(user_home)/.dwm/autostart.sh
-	echo "Success" > kmonad
+	echo "Success" > kmonad_w
 
 clean:
-	rm -f install basePackages addisionalPackages suckless startup fonts warp nvim swipl lunarvim qemu-kvm
+	rm -f *_w
 	rm -f /usr/bin/nvim
 	rm -rf $(user_home)/.config/nvim
 	rm -rf /squashfs-root
