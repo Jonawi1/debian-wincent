@@ -92,6 +92,17 @@ swipl:
 valgrind:
 	nala install valgrind -y
 
+stack:
+	curl -sSL https://get.haskellstack.org/ | sh
+	echo "Success" > stack
+
+kmonad: stack
+	git clone https://github.com/kmonad/kmonad.git
+	cd kmonad && stack install
+	cp -i configFiles/kmonad-keymap.kbd $(user_home)/
+	echo "kmonad $(user_home)/kmonad-keymap.kbd &" > $(user_home)/.dwm/autostart.sh
+	echo "Success" > kmonad
+
 clean:
 	rm -f install basePackages addisionalPackages suckless startup fonts warp nvim swipl lunarvim qemu-kvm
 	rm -f /usr/bin/nvim
