@@ -28,6 +28,7 @@ suckless: startup fonts
 	cd st && $(MAKE) clean install
 	cd dmenu && $(MAKE) clean install
 	cd slstatus && $(MAKE) clean install
+	cd wmname && $(MAKE) clean install
 	echo "Success" > suckless
 	
 startup:
