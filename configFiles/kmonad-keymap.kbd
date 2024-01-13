@@ -57,7 +57,7 @@
     XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      XX      bspc    XX      XX      XX
     tab     @q_esc  w       e       r       t       y       u       i       o       p       [       ]       ret     XX      XX      XX
     XX      @a_lmet @s_ralt @d_lctl @f_lsft g       h       @j_rsft @k_rctl @l_ralt @;_lmet '       \
-    XX      z       x       c       v       b       102d    n       m       ,       .       /       XX                      XX
+    XX      102d    z       x       c       v       b       n       m       ,       .       /       XX                      XX
     XX      XX      @sym                    @spc_num                        @sym    XX      XX      XX              XX      XX      XX
 )
 

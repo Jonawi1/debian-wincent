@@ -3,7 +3,7 @@ SHELL := /bin/bash
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 
-install_w: basePackages_w suckless_w alias_w nvim-wincent_w
+install_w: basePackages_w suckless_w alias_w nvim-wincent_w kmonad_w
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install_w
 	echo "Now reboot to complete the installation"
@@ -100,7 +100,7 @@ kmonad_w: stack_w
 	git clone https://github.com/kmonad/kmonad.git
 	cd kmonad && stack install
 	cp -i configFiles/kmonad-keymap.kbd $(user_home)/
-	echo "kmonad $(user_home)/kmonad-keymap.kbd &" > $(user_home)/.dwm/autostart.sh
+	echo "$(user_home)/.local/bin/kmonad $(user_home)/kmonad-keymap.kbd &" >> $(user_home)/.dwm/autostart.sh
 	echo "Success" > kmonad_w
 
 clean:
@@ -108,3 +108,5 @@ clean:
 	rm -f /usr/bin/nvim
 	rm -rf $(user_home)/.config/nvim
 	rm -rf /squashfs-root
+	rm -rf /usr/local/bin/stack
+	rm -rf kmonad
