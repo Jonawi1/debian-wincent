@@ -3,7 +3,7 @@ SHELL := /bin/bash
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 
-install_w: basePackages_w suckless_w alias_w nvim-wincent_w kmonad_w
+install_w: basePackages_w suckless_w nvim-wincent_w kmonad_w
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install_w
 	echo "Now reboot to complete the installation"
@@ -37,15 +37,9 @@ startup_w:
 	mkdir -p $(user_home)/.dwm/
 	cp -i configFiles/autostart.sh $(user_home)/.dwm/autostart.sh
 	cp -i -r slstatus-scripts/ /
+	cp -i dotfiles/.bashrc $(user_home)/.bashrc
+	cp -i dotfiles/.fancy-prompt.sh $(user_home)/.fancy-prompt.sh
 	echo "Success" > startup_w
-
-alias_w:
-	printf "%s\n" "alias sudo='sudo '" >> $(user_home)/.bashrc
-	printf "%s\n" "alias apt=nala" >> $(user_home)/.bashrc
-	printf "%s\n" "alias vim=nvim" >> $(user_home)/.bashrc
-	printf "%s\n" "alias ll='ls -lhA'" >> $(user_home)/.bashrc
-	printf "%s\n" "alias la='ls -a'" >> $(user_home)/.bashrc
-	echo "Success" > alias_w
 
 fonts_w:
 	mkdir -p $(user_home)/.fonts/FiraCode
