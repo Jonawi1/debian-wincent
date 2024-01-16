@@ -10,12 +10,12 @@ install_w: basePackages_w suckless_w alias_w nvim-wincent_w kmonad_w
 
 basePackages_w:
 	apt-get install nala -y
-	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst -y
+	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura -y
 	echo "Success" > basePackages_w
 
 addisionalPackages_w:
 	nala install snapd timeshift ninja-build gettext cmake x11-utils x11-xserver-utils \
-		python3-full gimp zathura npm pip nodejs cargo ripgrep neofetch-y
+		python3-full gimp npm pip nodejs cargo ripgrep neofetch-y
 	mkdir -p $(user_home)/.local/share/applications
 	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
 	snap install bitwarden
