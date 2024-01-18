@@ -10,7 +10,7 @@ install_w: basePackages_w suckless_w nvim-wincent_w kmonad_w
 
 basePackages_w:
 	apt-get install nala -y
-	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura -y
+	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura network-manager -y
 	echo "Success" > basePackages_w
 
 addisionalPackages_w:
