@@ -67,7 +67,7 @@ S-=	1	2	3	RA--	XX	(multi-tap 200 XX (layer-switch U_NUM))	(multi-tap 200 XX (lay
 (deflayer U_SYM
 RA-7	S-6	S-\	S--	RA-0	XX	(multi-tap 200 XX (layer-switch U_BASE))	(multi-tap 200 XX (layer-switch U_EXTRA))	(multi-tap 200 XX (layer-switch U_TAP))	XX
 S-2	RA-4	S-5	S-]	-	XX	sft	ctl	alt	met
-RA-]	S-1	RA-2	S-3	RA-102d	XX	(multi-tap 200 XX (layer-switch U_SYM))	(multi-tap 200 XX (layer-switch U_MOUSE))	ralt	XX
+\	S-1	RA-2	S-3	RA-102d	XX	(multi-tap 200 XX (layer-switch U_SYM))	(multi-tap 200 XX (layer-switch U_MOUSE))	ralt	XX
 		S-8	S-9	102d	XX	XX	XX
 )
 (deflayer U_FUN
