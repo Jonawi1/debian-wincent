@@ -46,10 +46,6 @@ fonts_w:
 	unzip FiraCode.zip -d $(user_home)/.fonts/FiraCode
 	echo "Success" > fonts_w
 
-warp_w:
-	./cloudflareWarp.sh
-	echo "Success" > warp_w
-
 nvim_w:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 	chmod u+x nvim.appimage
