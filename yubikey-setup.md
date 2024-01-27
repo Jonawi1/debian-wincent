@@ -47,7 +47,7 @@ Underneath the line:
 
 Add:
 
-	auth	required	pam_u2f.so
+	auth	required	pam_u2f.so cue
 
  And comment out the default auth method to only use the key:
 
@@ -63,4 +63,4 @@ Underneath the line:
 
 Add:
 
-	auth	required	pam_u2f.so
+	auth	required	pam_u2f.so cue
