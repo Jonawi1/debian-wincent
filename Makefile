@@ -80,8 +80,14 @@ stack_w:
 kmonad_w: stack_w
 	git clone https://github.com/kmonad/kmonad.git
 	cd kmonad && stack install
-	cp -i configFiles/kmonad-keymap.kbd $(user_home)/
-	echo "$(user_home)/.local/bin/kmonad $(user_home)/kmonad-keymap.kbd &" >> $(user_home)/.dwm/autostart.sh
+	mv /root/.local/bin/kmonad /usr/local/bin/
+	cp -i configFiles/miryoku_kmonad.kbd $(user_home)/
+	echo "$(user_home)/.local/bin/kmonad $(user_home)/miryoku_kmonad.kbd &" >> $(user_home)/.dwm/autostart.sh
+	groupadd -f uinput
+	usermod -aG input $(user)
+	usermod -aG uinput $(user)
+	cp -i configFiles/20-uinput.rules /etc/udev/rules.d/ 
+	modprobe uinput
 	echo "Success" > kmonad_w
 
 clean:
