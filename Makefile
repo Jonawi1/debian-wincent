@@ -10,17 +10,8 @@ install_w: basePackages_w suckless_w nvim-wincent_w kmonad_w
 
 basePackages_w:
 	apt-get install nala -y
-	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura network-manager -y
+	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura network-manager gimp -y
 	echo "Success" > basePackages_w
-
-addisionalPackages_w:
-	nala install snapd timeshift ninja-build gettext cmake x11-utils x11-xserver-utils \
-		python3-full gimp npm pip nodejs cargo ripgrep neofetch-y
-	mkdir -p $(user_home)/.local/share/applications
-	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
-	snap install bitwarden
-	# adduser $(user) libvirt
-	echo "Success" > addisionalPackages_w
 
 suckless_w: startup_w fonts_w
 	nala install build-essential libx11-dev libxft-dev libxinerama-dev xorg -y
