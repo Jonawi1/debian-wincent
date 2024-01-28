@@ -1,7 +1,5 @@
 #/bin/sh
 
-sleep 10
-
 if ! [ -f $BAT ]; then
     exit
 fi
@@ -11,14 +9,12 @@ while true; do
     BAT_PERCENT=$(cat /sys/class/power_supply/BAT0/capacity)
 
     if [ $BAT_STATE = "Discharging" ]; then
-        if [ $BAT_PERCENT -lt 30 ]; then
+        if [ $BAT_PERCENT -lt 20 ]; then
             dunstify --urgency=CRITICAL "Battery Low" "Level: ${BAT_PERCENT}%"
         fi
     else
         if [ $BAT_PERCENT -ge 100 ]; then
-            dunstify --urgency=NORMAL "Battery Full" "Level: ${BAT_PERCENT}%"
+            dunstify --urgency=LOW "Battery Full" "Level: ${BAT_PERCENT}%"
         fi
     fi
-
-    sleep 10
 done

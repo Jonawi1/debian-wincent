@@ -30,6 +30,8 @@ startup_w:
 	cp -i -r slstatus-scripts/ /
 	cp -i dotfiles/.bashrc $(user_home)/.bashrc
 	cp -i dotfiles/.fancy-prompt.sh $(user_home)/.fancy-prompt.sh
+	cp -i configFiles/battery-alert.sh $(user_home)/.config/
+	echo "*/1 * * * * $(user_home)/.config/battery-alert.sh" | crontab -u $(user) -
 	echo "Success" > startup_w
 
 fonts_w:
