@@ -10,7 +10,7 @@ while true; do
     BAT_STATE="grep "STATUS" /sys/class/power_supply/BAT0/uevent | awk -F = '{print $2}'"
     BAT_PERCENT=/sys/class/power_supply/BAT0/capacity
 
-    if [ $BAT_STATE = 'Discharging' ]; then
+    if [ $BAT_STATE = "Discharging" ]; then
         if [ $BAT_PERCENT -lt 30 ]; then
             dunstify --urgency=CRITICAL "Battery Low" "Level: ${BAT_PERCENT}%"
         fi
