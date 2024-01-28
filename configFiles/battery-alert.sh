@@ -7,7 +7,7 @@ if ! [ -f $BAT ]; then
 fi
 
 while true; do
-    BAT_STATE = grep "STATUS" /sys/class/power_supply/BAT0/uevent | awk -F = '{print $2}'
+    BAT_STATE="grep "STATUS" /sys/class/power_supply/BAT0/uevent | awk -F = '{print $2}'"
     BAT_PERCENT=/sys/class/power_supply/BAT0/capacity
 
     if [ $bat_state = 'Discharging' ]; then
