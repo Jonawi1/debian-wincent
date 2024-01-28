@@ -2,7 +2,7 @@
 
 BAT=/sys/class/power_supply/BAT0
 
-if ! [ -f $BAT ]; then
+if ! [ -d $BAT ]; then
     exit
 fi
 
