@@ -10,7 +10,7 @@ install_w: basePackages_w suckless_w nvim-wincent_w kmonad_w
 
 basePackages_w:
 	apt-get install nala -y
-	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura network-manager gimp npm -y
+	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura network-manager gimp npm dbus-x11 -y
 	echo "Success" > basePackages_w
 
 suckless_w: startup_w fonts_w
@@ -31,7 +31,7 @@ startup_w:
 	cp -i dotfiles/.bashrc $(user_home)/.bashrc
 	cp -i dotfiles/.fancy-prompt.sh $(user_home)/.fancy-prompt.sh
 	cp -i configFiles/battery-alert.sh $(user_home)/.config/
-	echo "*/1 * * * * $(user_home)/.config/battery-alert.sh" | crontab -u $(user) -
+	echo "*/1 * * * * export DISPLAY=:0 && /usr/bin/dbus-launch $(user_home)/.config/battery-alert.sh" | crontab -u $(user) -
 	echo "Success" > startup_w
 
 fonts_w:
