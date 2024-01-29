@@ -1,0 +1,2 @@
+#/bin/sh
+wine /home/jonwin/.wine/dosdevices/c\:/'Program Files (x86)'/TinyCad/TinyCad.exe
