@@ -23,15 +23,15 @@ suckless_w: startup_w fonts_w
 	echo "Success" > suckless_w
 	
 startup_w:
-	cp -i configFiles/.bash_profile $(user_home)/.bash_profile
-	cp -i configFiles/.xinitrc $(user_home)/.xinitrc
+	ln -i dotfiles/.bashrc $(user_home)/
+	ln -i dotfiles/.fancy-prompt.sh $(user_home)/.config/
+	ln -i dotfiles/.bash_profile $(user_home)/
+	ln -i dotfiles/.xinitrc $(user_home)/
 	mkdir -p $(user_home)/.dwm/
-	cp -i configFiles/autostart.sh $(user_home)/.dwm/autostart.sh
+	ln -i dotfiles/.dwm/autostart.sh $(user_home)/.dwm/
+	ln -i dotfiles/.battery-alert.sh $(user_home)/.config/
+	echo "*/1 * * * * export DISPLAY=:0 && /usr/bin/dbus-launch $(user_home)/.config/.battery-alert.sh" | crontab -u $(user) -
 	cp -i -r slstatus-scripts/ /
-	cp -i dotfiles/.bashrc $(user_home)/.bashrc
-	cp -i dotfiles/.fancy-prompt.sh $(user_home)/.fancy-prompt.sh
-	cp -i configFiles/battery-alert.sh $(user_home)/.config/
-	echo "*/1 * * * * export DISPLAY=:0 && /usr/bin/dbus-launch $(user_home)/.config/battery-alert.sh" | crontab -u $(user) -
 	echo "Success" > startup_w
 
 fonts_w:
