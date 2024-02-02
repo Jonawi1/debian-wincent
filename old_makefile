@@ -8,11 +8,6 @@ install_w: basePackages_w suckless_w nvim-wincent_w kmonad_w
 	echo "Success" > install_w
 	echo "Now reboot to complete the installation"
 
-basePackages_w:
-	apt-get install nala -y
-	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura network-manager gimp npm dbus-x11 -y
-	echo "Success" > basePackages_w
-
 suckless_w: startup_w fonts_w
 	nala install build-essential libx11-dev libxft-dev libxinerama-dev xorg -y
 	cd dwm && $(MAKE) clean install
