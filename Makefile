@@ -92,14 +92,6 @@ kmonad_w: stack_w
 	modprobe uinput
 	echo "Success" > kmonad_w
 
-tinycad_w:
-	dpkg --add-architecture i386
-	nala update
-	nala install wine wine32:i386
-	cp -i configFiles/tinyCad /usr/local/bin/
-	echo "Download https://sourceforge.net/projects/tinycad/files/latest/download"
-	echo "Success" > tinycad_w
-
 clean:
 	rm -f *_w
 	rm -f /usr/bin/nvim
