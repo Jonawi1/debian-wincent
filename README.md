@@ -1,5 +1,7 @@
 # debian-wincent
 
+Work in progress, rewriting installation in C.
+
 ## Install
 
 ### Prerequisites
