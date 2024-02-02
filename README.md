@@ -13,10 +13,12 @@ Work in progress, rewriting installation in C.
 
     git clone https://github.com/jonwin1/debian-wincent.git
     cd debian-wincent
-    sudo make
-    sudo reboot
+    make
+    ./installer
+    reboot
 
 To rebuild:
 
-    sudo make clean install_w
+    make clean installer
+    ./installer
 
