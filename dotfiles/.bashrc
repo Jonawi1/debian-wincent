@@ -18,9 +18,6 @@ HISTFILESIZE=2000
 
 # Append to the history file, don't overwrite it.
 shopt -s histappend
-#
-# Allow vim commands on command line.
-set -o vi
 
 # Check window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
