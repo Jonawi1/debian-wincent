@@ -3,24 +3,15 @@ SHELL := /bin/bash
 user = $${SUDO_USER:-$$USER}
 user_home = $$(getent passwd $(user) | cut -d: -f6)
 
-install_w: basePackages_w suckless_w alias_w nvim-wincent_w kmonad_w
+install_w: basePackages_w suckless_w nvim-wincent_w kmonad_w
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install_w
 	echo "Now reboot to complete the installation"
 
 basePackages_w:
 	apt-get install nala -y
-	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura network-manager -y
+	nala install curl unzip firefox-esr feh picom xclip wireplumber light unclutter-xfixes dunst zathura network-manager gimp npm dbus-x11 -y
 	echo "Success" > basePackages_w
-
-addisionalPackages_w:
-	nala install snapd timeshift ninja-build gettext cmake x11-utils x11-xserver-utils \
-		python3-full gimp npm pip nodejs cargo ripgrep neofetch-y
-	mkdir -p $(user_home)/.local/share/applications
-	cp -i configFiles/defaults.list $(user_home)/.local/share/applications/defaults.list
-	snap install bitwarden
-	# adduser $(user) libvirt
-	echo "Success" > addisionalPackages_w
 
 suckless_w: startup_w fonts_w
 	nala install build-essential libx11-dev libxft-dev libxinerama-dev xorg -y
@@ -32,29 +23,21 @@ suckless_w: startup_w fonts_w
 	echo "Success" > suckless_w
 	
 startup_w:
-	cp -i configFiles/.bash_profile $(user_home)/.bash_profile
-	cp -i configFiles/.xinitrc $(user_home)/.xinitrc
+	ln -i dotfiles/.bashrc $(user_home)/
+	ln -i dotfiles/.fancy-prompt.sh $(user_home)/.config/
+	ln -i dotfiles/.bash_profile $(user_home)/
+	ln -i dotfiles/.xinitrc $(user_home)/
 	mkdir -p $(user_home)/.dwm/
-	cp -i configFiles/autostart.sh $(user_home)/.dwm/autostart.sh
+	ln -i dotfiles/.dwm/autostart.sh $(user_home)/.dwm/
+	ln -i dotfiles/.battery-alert.sh $(user_home)/.config/
+	echo "*/1 * * * * export DISPLAY=:0 && /usr/bin/dbus-launch $(user_home)/.config/.battery-alert.sh" | crontab -u $(user) -
 	cp -i -r slstatus-scripts/ /
 	echo "Success" > startup_w
-
-alias_w:
-	printf "%s\n" "alias sudo='sudo '" >> $(user_home)/.bashrc
-	printf "%s\n" "alias apt=nala" >> $(user_home)/.bashrc
-	printf "%s\n" "alias vim=nvim" >> $(user_home)/.bashrc
-	printf "%s\n" "alias ll='ls -lhA'" >> $(user_home)/.bashrc
-	printf "%s\n" "alias la='ls -a'" >> $(user_home)/.bashrc
-	echo "Success" > alias_w
 
 fonts_w:
 	mkdir -p $(user_home)/.fonts/FiraCode
 	unzip FiraCode.zip -d $(user_home)/.fonts/FiraCode
 	echo "Success" > fonts_w
-
-warp_w:
-	./cloudflareWarp.sh
-	echo "Success" > warp_w
 
 nvim_w:
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
@@ -99,8 +82,14 @@ stack_w:
 kmonad_w: stack_w
 	git clone https://github.com/kmonad/kmonad.git
 	cd kmonad && stack install
-	cp -i configFiles/kmonad-keymap.kbd $(user_home)/
-	echo "$(user_home)/.local/bin/kmonad $(user_home)/kmonad-keymap.kbd &" >> $(user_home)/.dwm/autostart.sh
+	mv /root/.local/bin/kmonad /usr/local/bin/
+	cp -i configFiles/miryoku_kmonad.kbd $(user_home)/
+	echo "$(user_home)/.local/bin/kmonad $(user_home)/miryoku_kmonad.kbd &" >> $(user_home)/.dwm/autostart.sh
+	groupadd -f uinput
+	usermod -aG input $(user)
+	usermod -aG uinput $(user)
+	cp -i configFiles/20-uinput.rules /etc/udev/rules.d/ 
+	modprobe uinput
 	echo "Success" > kmonad_w
 
 clean:
