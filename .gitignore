@@ -2,3 +2,4 @@
 *.appimage
 kmonad/
 installer
+*.o

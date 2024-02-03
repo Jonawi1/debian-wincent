@@ -2,71 +2,55 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include <unistd.h>
 #include <string.h>
 #include <sys/wait.h>
 
-int main(void) {
-    int nPkgs = 20;
+#include "config.h"
+
+/* function declarations */
+void installpackages(void);
+
+/* variables */
+
+/* function implementations */
+void
+installpackages(void)
+{
+    int npkgs = sizeof(packages) / sizeof(char*);
+    char *cmd[npkgs + 5];
+
+    cmd[0] = "sudo";
+    cmd[1] = "apt-get";
+    cmd[2] = "install";
+    cmd[3] = "-y";
+    cmd[npkgs + 4] = (char*)NULL;
     
-    char **pkgs = calloc(nPkgs, sizeof(char*));
+    for (int i = 0; i < npkgs; i++) {
+        int size = strlen(packages[i]) * sizeof(char) + 1;
 
-    if (pkgs == NULL) {
-        fprintf(stderr, "Memory allocation failed\n");
-        return EXIT_FAILURE;
-    }
-
-    int n = 0;
-    pkgs[n] = strdup("sudo");
-    pkgs[++n] = strdup("nala");
-    pkgs[++n] = strdup("install");
-    pkgs[++n] = strdup("-y");
-    pkgs[++n] = strdup("curl");
-    pkgs[++n] = strdup("dbus-x11");
-    pkgs[++n] = strdup("dunst");
-    pkgs[++n] = strdup("feh");
-    pkgs[++n] = strdup("firefox-esr");
-    pkgs[++n] = strdup("gimp");
-    pkgs[++n] = strdup("light");
-    pkgs[++n] = strdup("network-manager");
-    pkgs[++n] = strdup("npm");
-    pkgs[++n] = strdup("picom");
-    pkgs[++n] = strdup("unclutter-xfixes");
-    pkgs[++n] = strdup("unzip");
-    pkgs[++n] = strdup("wireplumber");
-    pkgs[++n] = strdup("xclip");
-    pkgs[++n] = strdup("zathura");
-    pkgs[++n] = (char *) NULL;
-
-    for (int i = 0; i < nPkgs-1; ++i) {
-        if (pkgs[i] == NULL) {
-            fprintf(stderr, "Memory allocation for string %d failed\n", i + 1);
-            for (int j = 0; j < i; ++j) {
-                free(pkgs[j]);
-            }
-            free(pkgs);
-            return EXIT_FAILURE;
+        cmd[i + 4] = (char*) malloc(size);
+        if (cmd[i + 4] == NULL) {
+            perror("malloc");
+            exit(EXIT_FAILURE);
         }
+        strcpy(cmd[i + 4], packages[i]);
     }
 
     printf("Sudo privileges are required for packages installation.\n");
+    execvp(cmd[0], cmd);
+}
+
+
+int 
+main(void)
+{
     pid_t p = fork();
     if (p == 0) {
-        printf("sudo apt-get install -y nala\n");
-        execlp("sudo", "sudo", "apt-get", "install", "-y", "nala", (char *) NULL);
+        installpackages();
     }
     wait(NULL);
-    p = fork();
-    if (p == 0) {
-        printf("sudo nala install -y ...\n");
-        execvp("sudo", pkgs);
-    }
-    wait(NULL);
-
-    for (int i = 0; i < nPkgs; ++i) {
-        free(pkgs[i]);
-    }
-    free(pkgs);
 
     return EXIT_SUCCESS;
 }
