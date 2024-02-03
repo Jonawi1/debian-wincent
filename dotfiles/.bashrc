@@ -53,7 +53,6 @@ fi
 
 # Alias
 alias sudo='sudo '
-alias apt=nala
 alias vim=nvim
 alias ll='ls -lhA'
 alias la='ls -a'
