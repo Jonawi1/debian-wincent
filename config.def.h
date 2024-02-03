@@ -2,6 +2,7 @@
 
 /* packages to install */
 static const char *packages[] = {
+    "bluez",
     "curl",
     "dbus-x11",
     "dunst",
@@ -12,9 +13,9 @@ static const char *packages[] = {
     "network-manager",
     "npm",
     "picom",
+    "pipewire",
     "unclutter-xfixes",
     "unzip",
-    "wireplumber",
     "xclip",
     "zathura",
 };

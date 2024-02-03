@@ -74,3 +74,5 @@ alias ....='cd ../../..'
 alias c='clear'
 alias h='history'
 alias mkdir='mkdir -p -v'
+
+alias clip='xclip -selection clipboard'
