@@ -1,6 +1,6 @@
 # debian-wincent
 
-Work in progress, rewriting installation in C.
+Work in progress, potentially instead of c-installer.
 
 ## Install
 
@@ -13,12 +13,9 @@ Work in progress, rewriting installation in C.
 
     git clone https://github.com/jonwin1/debian-wincent.git
     cd debian-wincent
-    make
-    ./installer
+    ./install.sh
     reboot
 
 To rebuild:
 
-    make clean installer
-    ./installer
-
+    ./install.sh
