@@ -6,16 +6,6 @@ user_home = $$(getent passwd $(user) | cut -d: -f6)
 install_w: basePackages_w suckless_w nvim-wincent_w kmonad_w
 	chown -R $(user):$(user) $(user_home)/
 	echo "Success" > install_w
-	echo "Now reboot to complete the installation"
-
-suckless_w: startup_w fonts_w
-	nala install build-essential libx11-dev libxft-dev libxinerama-dev xorg -y
-	cd dwm && $(MAKE) clean install
-	cd st && $(MAKE) clean install
-	cd dmenu && $(MAKE) clean install
-	cd slstatus && $(MAKE) clean install
-	cd wmname && $(MAKE) clean install
-	echo "Success" > suckless_w
 	
 startup_w:
 	ln -i dotfiles/.bashrc $(user_home)/

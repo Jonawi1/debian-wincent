@@ -1,5 +1,7 @@
 /* Se LICENSE file for copyright and license details. */
 
+#include <stdlib.h>
+
 /* packages to install */
 static const char *packages[] = {
     "bluez",
@@ -18,4 +20,5 @@ static const char *packages[] = {
     "unzip",
     "xclip",
     "zathura",
+    NULL
 };
