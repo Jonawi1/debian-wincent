@@ -9,6 +9,9 @@ esac
 #printf "\n"
 #neofetch
 
+# Allow vi commands on command line.
+#set -o vi
+
 # Ignore duplicate and lines starting with space in the history.
 HISTCONTROL=ignoreboth
 
@@ -53,19 +56,20 @@ fi
 
 # Alias
 alias sudo='sudo '
-alias vim=nvim
+alias v=nvim
 alias ll='ls -lhA'
 alias la='ls -a'
 
+alias g='git'
 alias gs='git status'
 alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
 alias gps='git push'
 alias gpl='git pull'
-alias gl='git log --oneline'
 alias gb='git checkout -b'
 alias gd='git diff'
+alias gf='git fetch'
 
 alias ..='cd ..'
 alias ...='cd ../..'
