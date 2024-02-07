@@ -10,6 +10,7 @@ static const char *packages[] = {
     "dunst",
     "feh",
     "firefox-esr",
+    "fonts-firacode",
     "gimp",
     "light",
     "network-manager",
