@@ -1,24 +1,3 @@
-# See LICENSE file for copyright and license details.
-SHELL := /bin/bash
-user = $${SUDO_USER:-$$USER}
-user_home = $$(getent passwd $(user) | cut -d: -f6)
-
-install_w: basePackages_w suckless_w nvim-wincent_w kmonad_w
-	chown -R $(user):$(user) $(user_home)/
-	echo "Success" > install_w
-	
-startup_w:
-	ln -i dotfiles/.bashrc $(user_home)/
-	ln -i dotfiles/.fancy-prompt.sh $(user_home)/.config/
-	ln -i dotfiles/.bash_profile $(user_home)/
-	ln -i dotfiles/.xinitrc $(user_home)/
-	mkdir -p $(user_home)/.dwm/
-	ln -i dotfiles/.dwm/autostart.sh $(user_home)/.dwm/
-	ln -i dotfiles/.battery-alert.sh $(user_home)/.config/
-	echo "*/1 * * * * export DISPLAY=:0 && /usr/bin/dbus-launch $(user_home)/.config/.battery-alert.sh" | crontab -u $(user) -
-	cp -i -r slstatus-scripts/ /
-	echo "Success" > startup_w
-
 fonts_w:
 	mkdir -p $(user_home)/.fonts/FiraCode
 	unzip FiraCode.zip -d $(user_home)/.fonts/FiraCode
