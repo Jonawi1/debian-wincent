@@ -61,7 +61,22 @@ cp -i dotfiles/.bash_profile /home/$username/
 cp -i dotfiles/.xinitrc /home/$username/
 mkdir -p /home/$username/.dwm/
 cp -i dotfiles/.dwm/autostart.sh /home/$username/.dwm/
-cp -i -r slstatus-scripts/ /
+sudo cp -i -r slstatus-scripts/ /
+
+# neovim
+sudo nala install -y \
+    ninja-build \
+    gettext \
+    cmake \
+    unzip \
+    curl
+rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
+rm -rf ~/.cache/nvim
+cd neovim 
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+git clone https://github.com/jonwin1/nvim-wincent ~/.config/nvim
 
 echo "Reboot to complete the installation"
 

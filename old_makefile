@@ -1,21 +1,3 @@
-fonts_w:
-	mkdir -p $(user_home)/.fonts/FiraCode
-	unzip FiraCode.zip -d $(user_home)/.fonts/FiraCode
-	echo "Success" > fonts_w
-
-nvim_w:
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-	chmod u+x nvim.appimage
-	./nvim.appimage --appimage-extract
-	mv squashfs-root /
-	ln -s /squashfs-root/AppRun /usr/bin/nvim
-	echo "Success" > nvim_w
-
-nvim-wincent_w: nvim_w
-	mkdir -p $(user_home)/.config
-	git clone https://github.com/jonwin1/nvim-wincent $(user_home)/.config/nvim
-	echo "Success" > nvim-wincent_w
-
 resolveEACCES_w: # Not done
 	nala install -y ca-certificates curl gnupg
 	mkdir -p /etc/apt/keyrings
