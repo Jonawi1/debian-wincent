@@ -10,3 +10,5 @@ slstatus &
 unclutter &
 wmname LG3D &
 dunst &
+kmonad /home/jonwin/miryoku_kmonad.kbd &
+
