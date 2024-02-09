@@ -1,3 +1,6 @@
 [submodule "neovim"]
 	path = neovim
 	url = https://github.com/neovim/neovim
+[submodule "kmonad"]
+	path = kmonad
+	url = https://github.com/kmonad/kmonad.git
