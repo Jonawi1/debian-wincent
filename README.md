@@ -1,13 +1,10 @@
 # debian-wincent
 
-Work in progress, potentially instead of c-installer.
-
 ## Install
 
 ### Prerequisites
 
     git
-    make
 
 ### Instructions
 
