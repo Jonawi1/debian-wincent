@@ -32,6 +32,7 @@ sudo nala install -y \
     wget \
     wireplumber \
     xclip \
+    xdotool \
     zathura
 
 # virtual machines
