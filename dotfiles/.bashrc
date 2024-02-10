@@ -35,7 +35,7 @@ xterm*|rxvt*)
     ;;
 esac
 
-source ~/.config/.fancy-prompt.sh
+source ~/.config/fancy-prompt.sh
 
 # Enable color support to ls.
 if [ -x /usr/bin/dircolors ]; then
