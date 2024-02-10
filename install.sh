@@ -71,7 +71,8 @@ sudo nala install -y \
     gettext \
     cmake \
     unzip \
-    curl
+    curl \
+    python3.11-venv
 rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim
 rm -rf ~/.cache/nvim
