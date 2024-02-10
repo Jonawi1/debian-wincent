@@ -26,6 +26,7 @@ sudo nala install -y \
     npm \
     picom \
     pipewire \
+    texlive-full \
     unclutter-xfixes \
     unzip \
     wget \
