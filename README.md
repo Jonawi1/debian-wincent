@@ -5,16 +5,14 @@
 ### Prerequisites
 
     git
-    make
 
 ### Instructions
 
     git clone https://github.com/jonwin1/debian-wincent.git
     cd debian-wincent
-    sudo make
-    sudo reboot
+    ./install.sh
+    reboot
 
 To rebuild:
 
-    sudo make clean install_w
-
+    ./install.sh

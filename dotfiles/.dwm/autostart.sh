@@ -10,3 +10,4 @@ slstatus &
 unclutter &
 wmname LG3D &
 dunst &
+
