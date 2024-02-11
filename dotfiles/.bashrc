@@ -80,3 +80,6 @@ alias h='history'
 alias mkdir='mkdir -p -v'
 
 alias clip='xclip -selection clipboard'
+
+# Created by `pipx` on 2024-02-11 18:46:37
+export PATH="$PATH:/home/jonwin/.local/bin"

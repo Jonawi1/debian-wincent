@@ -7,38 +7,41 @@ builddir=$(pwd)
 echo "Sudo privileges are required for some operations."
 echo "Authenticate if this is okay."
 
-function install() {
-    sudo apt update
-    sudo apt install nala -y
-    #sudo nala fetch --auto # skip if exsists
-    sudo nala upgrade -y
+sudo apt update
+sudo apt install nala -y
+#sudo nala fetch --auto # skip if exsists
+sudo nala upgrade -y
 
-    sudo nala install -y \
-        bluez \
-        curl \
-        dbus-x11 \
-        dunst \
-        feh \
-        firefox-esr \
-        fonts-firacode \
-        gimp \
-        light \
-        network-manager \
-        npm \
-        picom \
-        pipewire \
-        texlive-full \
-        unclutter-xfixes \
-        unzip \
-        wget \
-        wireplumber \
-        xclip \
-        xdotool \
-        zathura
+sudo nala install -y \
+    bluez \
+    curl \
+    dbus-x11 \
+    dunst \
+    feh \
+    firefox-esr \
+    fonts-firacode \
+    gimp \
+    light \
+    network-manager \
+    npm \
+    picom \
+    pipewire \
+    pipx \
+    texlive-full \
+    unclutter-xfixes \
+    unzip \
+    wget \
+    wireplumber \
+    x11-xserver-utils \
+    xclip \
+    xdotool \
+    zathura
+
+pipx ensurepath
+pipx install pywal
 
 # virtual machines
 # sudo nala install -y qemu-system libvirt-daemon-system virt-manager ovmf
-}
 
 function suckless() {
     sudo nala install -y \
