@@ -10,4 +10,5 @@ slstatus &
 unclutter &
 wmname LG3D &
 dunst &
+kmonad .config/miryoku_kmonad.kbd &
 
