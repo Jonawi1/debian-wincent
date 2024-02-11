@@ -56,6 +56,8 @@ cd $builddir
 # Config files and .files
 mkdir -p ~/.config
 cp -Ri dotconfig/* ~/.config
+mkdir -p ~/pictures
+cp -i bg.jpg ~/pictures/
 # crontab background execution of battery alert.
 echo "*/1 * * * * export DISPLAY=:0 && /usr/bin/dbus-launch /home/$username/.config/.battery-alert.sh" | crontab -u $username -
 
