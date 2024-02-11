@@ -77,6 +77,7 @@ sudo nala install -y \
     unzip \
     curl \
     python3.11-venv
+sudo nala purge -y nano
 rm -rf ~/.config/nvim
 rm -rf ~/.local/share/nvim
 rm -rf ~/.cache/nvim
