@@ -179,7 +179,7 @@ static uint forcemousemod = ShiftMask;
  * Xresources preferences to load at startup
  */
 ResourcePref resources[] = {
-		{ "font",           STRING,     &font },
+/*		{ "font",           STRING,     &font }, */
 		{ "color0",         STRING,     &colorname[0] },
 		{ "color1",         STRING,     &colorname[1] },
 		{ "color2",         STRING,     &colorname[2] },
@@ -199,7 +199,7 @@ ResourcePref resources[] = {
 		{ "foreground",     STRING,     &colorname[256] },
 		{ "background",     STRING,     &colorname[257] },
 		{ "cursorColor",    STRING,     &colorname[258] },
-		{ "termname",       STRING,     &termname },
+/*		{ "termname",       STRING,     &termname }, 
 		{ "shell",          STRING,     &shell },
 		{ "minlatency",     INTEGER,    &minlatency },
 		{ "maxlatency",     INTEGER,    &maxlatency },
@@ -209,7 +209,7 @@ ResourcePref resources[] = {
 		{ "borderpx",       INTEGER,    &borderpx },
 		{ "cwscale",        FLOAT,      &cwscale },
 		{ "chscale",        FLOAT,      &chscale },
-/*        { "alpha",          FLOAT,      &alpha },
+        { "alpha",          FLOAT,      &alpha },
         { "alphaUnfocused", FLOAT,      &alphaUnfocused },*/
 };
 
