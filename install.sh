@@ -87,8 +87,8 @@ function copy_and_link() {
 copy_and_link "$builddir/dotconfig" "/home/$username/.config"
 copy_and_link "$builddir/dotfiles" "/home/$username"
 
-mkdir -p ~/pictures
-cp -i bg.jpg ~/pictures/
+mkdir -p ~/pictures/
+cp -ir backgrounds/ ~/pictures/
 # crontab background execution of battery alert.
 echo "*/1 * * * * export DISPLAY=:0 && /usr/bin/dbus-launch /home/$username/.config/battery-alert.sh" | crontab -u $username -
 

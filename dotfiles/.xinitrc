@@ -1,3 +1,3 @@
 xrdb -load ~/.Xresources
-~/.local/bin/wal -R
+~/.config/rand_wallpaper.sh
 exec dwm
