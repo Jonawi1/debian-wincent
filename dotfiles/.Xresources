@@ -5,7 +5,14 @@
 ! Font.
 *.font: Fira Code-12;
 
-*.borderpx: 2
+st.borderpx:        2
+dwm.borderpx:       2
+dwm.snap:           32
+dwm.showbar:        0
+dwm.topbar:         1
+dwm.nmaster:        2
+dwm.resizehints:    0
+dwm.mfact:          0.66
 
 ! X colors.
 *.foreground:           #d3daea
