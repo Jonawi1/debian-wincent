@@ -11,5 +11,7 @@ unclutter &
 wmname LG3D &
 dunst &
 kmonad .config/miryoku_kmonad.kbd &
-.local/bin/wal -R > wallog.txt 2>&1 &
+xrdb -load ~/.Xresources
+.local/bin/wal -R &
+
 
