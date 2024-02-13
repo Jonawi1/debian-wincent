@@ -9,7 +9,7 @@ echo "Authenticate if this is okay."
 
 sudo apt update
 sudo apt install nala -y
-#sudo nala fetch --auto # skip if exsists
+#sudo nala fetch --auto # TODO skip if exsists
 sudo nala upgrade -y
 
 sudo nala install -y \
