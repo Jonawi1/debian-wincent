@@ -1,6 +1,7 @@
 ! Transparency.
 *.alpha: .9
 *.alphaUnfocused: .8
+dwm.alpha: 0xd0
 
 ! Font.
 *.font: Fira Code-12;
