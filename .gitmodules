@@ -4,3 +4,12 @@
 [submodule "kmonad"]
 	path = kmonad
 	url = https://github.com/kmonad/kmonad.git
+[submodule "dwm"]
+	path = dwm
+	url = https://git.suckless.org/dwm
+[submodule "st"]
+	path = st
+	url = https://git.suckless.org/st
+[submodule "dmenu"]
+	path = dmenu
+	url = https://git.suckless.org/dmenu
