@@ -12,7 +12,7 @@
       x c v , . /
 )
 (deflayer U_BASE
-q	w	f	p	b	j	l	u	y	'
+q	w	f	p	b	j	l	u	y	;
 (tap-hold-next-release 200 a met)	(tap-hold-next-release 200 r alt)	(tap-hold-next-release 200 s ctl)	(tap-hold-next-release 200 t sft)	g	m	(tap-hold-next-release 200 n sft)	(tap-hold-next-release 200 e ctl)	(tap-hold-next-release 200 i alt)	(tap-hold-next-release 200 o met)
 (tap-hold-next-release 200 z (layer-toggle U_BUTTON))	(tap-hold-next-release 200 x ralt)	c	d	v	k	h	,	(tap-hold-next-release 200 . ralt)	(tap-hold-next-release 200 / (layer-toggle U_BUTTON))
         (tap-hold-next-release 200 esc (layer-toggle U_MEDIA))	(tap-hold-next-release 200 spc (layer-toggle U_NAV))	(tap-hold-next-release 200 tab (layer-toggle U_MOUSE))	(tap-hold-next-release 200 ent (layer-toggle U_SYM))	(tap-hold-next-release 200 bspc (layer-toggle U_NUM))	(tap-hold-next-release 200 del (layer-toggle U_FUN))
