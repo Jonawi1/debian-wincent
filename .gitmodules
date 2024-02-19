@@ -13,3 +13,6 @@
 [submodule "dmenu"]
 	path = dmenu
 	url = https://git.suckless.org/dmenu
+[submodule "nvim-wincent"]
+	path = nvim-wincent
+	url = git@github.com:jonwin1/nvim-wincent.git

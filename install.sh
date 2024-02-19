@@ -4,6 +4,9 @@
 username=$(id -u -n 1000)
 builddir=$(pwd)
 
+git submodule init
+git submodule update
+
 echo "Sudo privileges are required for some operations."
 echo "Authenticate if this is okay."
 
@@ -12,6 +15,9 @@ sudo apt install nala -y
 #sudo nala fetch --auto # TODO skip if exsists
 sudo nala upgrade -y
 
+# tools
+
+# applications
 sudo nala install -y \
     bluez \
     curl \
@@ -42,22 +48,23 @@ pipx install pywal
 
 # virtual machines
 # sudo nala install -y qemu-system libvirt-daemon-system virt-manager ovmf
+# sudo adduser $username libvirt
+# sudo adduser $username kvm
 
-function suckless() {
-    sudo nala install -y \
-        build-essential \
-        libx11-dev \
-        libxft-dev \
-        libxinerama-dev \
-        xorg
+# suckless
+sudo nala install -y \
+    build-essential \
+    libx11-dev \
+    libxft-dev \
+    libxinerama-dev \
+    xorg
 
-    cd dwm && sudo make clean install && cd ..
-    cd st && sudo make clean install && cd ..
-    cd dmenu && sudo make clean install && cd ..
-    cd slstatus && sudo make clean install && cd ..
-    cd wmname && sudo make clean install && cd ..
-    cd $builddir
-}
+cd dwm && sudo make clean install && cd ..
+cd st && sudo make clean install && cd ..
+cd dmenu && sudo make clean install && cd ..
+cd slstatus && sudo make clean install && cd ..
+cd wmname && sudo make clean install && cd ..
+cd $builddir
 
 # copy_and_link src_dir dest_dir
 # Copy the directory structure and create symbolic links to each file.
@@ -95,38 +102,36 @@ echo "*/1 * * * * export DISPLAY=:0 && /usr/bin/dbus-launch /home/$username/.con
 # TODO
 sudo cp -i -r slstatus-scripts/ /
 
-function neovim() {
-    sudo nala install -y \
-        ninja-build \
-        gettext \
-        cmake \
-        unzip \
-        curl \
-        python3.11-venv
-            sudo nala purge -y nano
-            rm -rf ~/.config/nvim
-            rm -rf ~/.local/share/nvim
-            rm -rf ~/.cache/nvim
-            cd neovim 
-            make CMAKE_BUILD_TYPE=RelWithDebInfo
-            sudo make install
-            cd $builddir
-            git clone https://github.com/jonwin1/nvim-wincent ~/.config/nvim
-}
+# neovim
+sudo nala install -y \
+    ninja-build \
+    gettext \
+    cmake \
+    unzip \
+    curl \
+    python3.11-venv
 
-function kmonad() {
-    curl -sSL https://get.haskellstack.org/ | sh
-    cd kmonad
-    rm -rf .stack-work
-    stack build
-    sudo cp .stack-work/install/*/*/*/bin/kmonad /usr/local/bin/
-    cd $builddir
-    sudo groupadd -f uinput
-    sudo usermod -aG input $username
-    sudo usermod -aG uinput $username
-    sudo cp -i configFiles/20-uinput.rules /etc/udev/rules.d/ 
-    sudo modprobe uinput
-}
+sudo nala purge -y nano
+rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim
+rm -rf ~/.cache/nvim
+cd neovim 
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+cd $builddir
+ln -s $builddir/nvim-wincent ~/.config/nvim
+
+curl -sSL https://get.haskellstack.org/ | sh
+cd kmonad
+rm -rf .stack-work
+stack build
+sudo cp .stack-work/install/*/*/*/bin/kmonad /usr/local/bin/
+cd $builddir
+sudo groupadd -f uinput
+sudo usermod -aG input $username
+sudo usermod -aG uinput $username
+sudo cp -i configFiles/20-uinput.rules /etc/udev/rules.d/ 
+sudo modprobe uinput
 
 echo "Reboot to complete the installation"
 
