@@ -62,9 +62,10 @@ sudo nala install -y \
 cd dwm && sudo make clean install && cd ..
 cd st && sudo make clean install && cd ..
 cd dmenu && sudo make clean install && cd ..
-cd slstatus && sudo make clean install && cd ..
+#cd slstatus && sudo make clean install && cd ..
 cd wmname && sudo make clean install && cd ..
-cd $builddir
+# TODO
+#sudo cp -i -r slstatus-scripts/ /
 
 # copy_and_link src_dir dest_dir
 # Copy the directory structure and create symbolic links to each file.
@@ -99,9 +100,6 @@ cp -ir backgrounds/ ~/pictures/
 # crontab background execution of battery alert.
 echo "*/1 * * * * export DISPLAY=:0 && /usr/bin/dbus-launch /home/$username/.config/battery-alert.sh" | crontab -u $username -
 
-# TODO
-sudo cp -i -r slstatus-scripts/ /
-
 # neovim
 sudo nala install -y \
     ninja-build \
@@ -121,6 +119,7 @@ sudo make install
 cd $builddir
 ln -s $builddir/nvim-wincent ~/.config/nvim
 
+# kmonad
 curl -sSL https://get.haskellstack.org/ | sh
 cd kmonad
 rm -rf .stack-work
