@@ -1,43 +1,19 @@
-! Transparency.
-*.alpha: .9
-*.alphaUnfocused: .8
-dwm.alpha: 0xd0
-
-! Font.
 *.font: Fira Code-12;
 
+! st
 st.borderpx:        2
-dwm.borderpx:       2
-dwm.snap:           32
+st.alpha:           0.9
+st.alphaUnfocused:  0.8
+
+! dwm
 dwm.showbar:        0
 dwm.topbar:         1
-dwm.nmaster:        2
-dwm.resizehints:    0
-dwm.mfact:          0.66
-
-! X colors.
-*.foreground:           #d3daea
-*.background:           #101219
-*.cursorColor:          #d3daea
-*.reverseCursorColor:   #101219
-
-! Colors 0-15.
-*.color0:   #101219
-*.color1:   #896F8F
-*.color2:   #7091B1
-*.color3:   #9396AA
-*.color4:   #C7BFBB
-*.color5:   #A1B2D3
-*.color6:   #B8C3D8
-*.color7:   #d3daea
-*.color8:   #9398a3
-*.color9:   #896F8F
-*.color10:  #7091B1
-*.color11:  #9396AA
-*.color12:  #C7BFBB
-*.color13:  #A1B2D3
-*.color14:  #B8C3D8
-*.color15:  #d3daea
-
-! Black color that will not be affected by bold highlighting.
-*.color66:  #101219
+dwm.nmaster:        1
+dwm.mfact:          0.5
+! 0: tile
+! 1: floating
+! 2: monocle
+! 3: centeredmaster
+! 4: centeredfloatingmaster
+dwm.defaultlayout:  0
+dwm.centerfirst: 0

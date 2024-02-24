@@ -57,7 +57,9 @@ sudo nala install -y \
     libx11-dev \
     libxft-dev \
     libxinerama-dev \
-    xorg
+    xorg \
+    libx11-xcb-dev \
+    libxcb-res0-dev
 
 cd dwm && sudo make clean install && cd ..
 cd st && sudo make clean install && cd ..
