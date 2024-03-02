@@ -6,10 +6,12 @@ st.alpha:           0.9
 st.alphaUnfocused:  0.8
 
 ! dwm
+dwm.borderpx:       2
 dwm.showbar:        0
 dwm.topbar:         1
 dwm.nmaster:        1
 dwm.mfact:          0.5
+!! defaultlayout
 ! 0: tile
 ! 1: floating
 ! 2: monocle
