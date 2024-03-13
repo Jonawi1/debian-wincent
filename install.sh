@@ -43,8 +43,8 @@ sudo nala install -y \
     xdotool \
     zathura
 
-pipx ensurepath
-pipx install pywal
+#pipx ensurepath
+#pipx install pywal
 
 # virtual machines
 # sudo nala install -y qemu-system libvirt-daemon-system virt-manager ovmf

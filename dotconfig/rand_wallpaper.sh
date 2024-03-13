@@ -25,4 +25,5 @@ random_index=$((RANDOM % ${#wallpapers[@]}))
 random_wallpaper="${wallpapers[$random_index]}"
 
 # Set wallpaper
-$HOME/.local/bin/wal -i $random_wallpaper
+#$HOME/.local/bin/wal -i $random_wallpaper
+feh --bg-fill $random_wallpaper

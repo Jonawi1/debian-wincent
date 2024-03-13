@@ -6,7 +6,6 @@
 
 xset b off s off -dpms
 
-xrdb -load ~/.Xresources
 ~/.config/rand_wallpaper.sh
 picom --experimental-backend &
 unclutter &
