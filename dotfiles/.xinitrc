@@ -12,4 +12,5 @@ picom --experimental-backend &
 unclutter &
 dunst &
 kmonad .config/keymap.kbd &
+~/.config/bintime.sh &
 exec dwm
