@@ -8,7 +8,7 @@ xset b off s off -dpms
 
 xrdb -load ~/.Xresources
 ~/.config/rand_wallpaper.sh
-picom &
+picom --experimental-backend &
 unclutter &
 dunst &
 kmonad .config/keymap.kbd &
