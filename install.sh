@@ -110,6 +110,7 @@ sudo nala install -y \
     cmake \
     unzip \
     curl \
+    ripgrep \
     python3.11-venv
 
 sudo nala purge -y nano
