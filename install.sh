@@ -19,6 +19,7 @@ sudo nala upgrade -y
 
 # applications
 sudo nala install -y \
+    bc \
     bluez \
     curl \
     dbus-x11 \
@@ -64,7 +65,7 @@ sudo nala install -y \
 
 cd dwm && sudo make clean install && cd ..
 cd st && sudo make clean install && cd ..
-#cd dmenu && sudo make clean install && cd ..
+cd dmenu && sudo make clean install && cd ..
 #cd slstatus && sudo make clean install && cd ..
 #cd wmname && sudo make clean install && cd ..
 # TODO
