@@ -12,10 +12,10 @@ echo "Authenticate if this is okay."
 
 sudo apt update
 sudo apt install nala -y
-#sudo nala fetch --auto # TODO skip if exsists
+if ! [ -f /etc/apt/sources.list.d/nala-sources.list ]; then
+    sudo nala fetch --auto
+fi
 sudo nala upgrade -y
-
-# tools
 
 # applications
 sudo nala install -y \
@@ -44,9 +44,6 @@ sudo nala install -y \
     xdotool \
     zathura
 
-#pipx ensurepath
-#pipx install pywal
-
 # virtual machines
 # sudo nala install -y qemu-system libvirt-daemon-system virt-manager ovmf
 # sudo adduser $username libvirt
@@ -69,10 +66,7 @@ cd dwm && sudo make clean install && cd ..
 cd st && sudo make clean install && cd ..
 cd dmenu && sudo make clean install && cd ..
 cd slock && sudo make clean install && cd ..
-#cd slstatus && sudo make clean install && cd ..
 #cd wmname && sudo make clean install && cd ..
-# TODO
-#sudo cp -i -r slstatus-scripts/ /
 
 # copy_and_link src_dir dest_dir
 # Copy the directory structure and create symbolic links to each file.
