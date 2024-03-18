@@ -61,11 +61,13 @@ sudo nala install -y \
     xorg \
     libx11-xcb-dev \
     libxcb-res0-dev \
-    libharfbuzz-dev
+    libharfbuzz-dev \
+    libxrandr-dev
 
 cd dwm && sudo make clean install && cd ..
 cd st && sudo make clean install && cd ..
 cd dmenu && sudo make clean install && cd ..
+cd slock && sudo make clean install && cd ..
 #cd slstatus && sudo make clean install && cd ..
 #cd wmname && sudo make clean install && cd ..
 # TODO
