@@ -16,6 +16,6 @@
 [submodule "nvim-wincent"]
 	path = nvim-wincent
 	url = https://github.com/jonwin1/nvim-wincent
-[submodule "slock-jonwin"]
-	path = slock-jonwin
+[submodule "slock"]
+	path = slock
 	url = https://github.com/jonwin1/slock-jonwin.git
