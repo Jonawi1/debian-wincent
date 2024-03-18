@@ -14,7 +14,11 @@ while (true) do
         TEMP="| CPU $(cat $TEMP_FILE | awk '{print $0 / 1000}')°C "
     fi
 
-    VOL="| VOL $(wpctl get-volume $ID | awk '{print $2 * 100}')% "
+    if wpctl get-volume $ID | grep -q MUTED; then
+        VOL="| VOL X% "
+    else
+        VOL="| VOL $(wpctl get-volume $ID | awk '{print $2 * 100}')% "
+    fi
 
     TIME="| $(date "+%F %T") "
     
