@@ -62,7 +62,8 @@ sudo nala install -y \
     libx11-xcb-dev \
     libxcb-res0-dev \
     libharfbuzz-dev \
-    libxrandr-dev
+    libxrandr-dev \
+    libimlib2-dev
 
 cd dwm && sudo make clean install && cd ..
 cd st && sudo make clean install && cd ..
