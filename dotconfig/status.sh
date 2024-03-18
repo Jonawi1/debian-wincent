@@ -27,8 +27,8 @@ while (true) do
     fi
 
     LIGHT_OUTPUT=$(light -G)
-    if echo "$LIGHT_OUTPUT" | grep -q "No backlight controller was found"; then
-        BRT="| $(echo "$LIGHT_OUTPUT" | awk '{print int(($1 / 5) + 0.5) * 5}')% "
+    if ! echo "$LIGHT_OUTPUT" | grep -q "No backlight controller was found"; then
+        BRT="| BRT $(echo "$LIGHT_OUTPUT" | awk '{print int(($1 / 5) + 0.5) * 5}')% "
     fi
 
     dwm -s "$TEMP$BRT$VOL$TIME$BAT|"
