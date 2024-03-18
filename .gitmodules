@@ -4,3 +4,15 @@
 [submodule "kmonad"]
 	path = kmonad
 	url = https://github.com/kmonad/kmonad.git
+[submodule "dwm"]
+	path = dwm
+	url = https://github.com/jonwin1/dwm-jonwin.git
+[submodule "st"]
+	path = st
+	url = https://github.com/jonwin1/st-jonwin.git
+[submodule "dmenu"]
+	path = dmenu
+	url = https://github.com/jonwin1/dmenu-jonwin.git
+[submodule "nvim-wincent"]
+	path = nvim-wincent
+	url = https://github.com/jonwin1/nvim-wincent
