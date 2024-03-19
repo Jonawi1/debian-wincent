@@ -11,10 +11,6 @@ BAT_PERCENT=$(cat $BAT/capacity)
 
 if [ $BAT_STATE = "Discharging" ]; then
     if [ $BAT_PERCENT -lt 20 ]; then
-        dunstify --urgency=CRITICAL "Battery Low" "Level: ${BAT_PERCENT}%"
-    fi
-else
-    if [ $BAT_PERCENT -ge 100 ]; then
-        dunstify --urgency=LOW "Battery Full" "Level: ${BAT_PERCENT}%"
+        dunstify --urgency=CRITICAL --timeout=60000 "Battery Low" "Level: ${BAT_PERCENT}%"
     fi
 fi
