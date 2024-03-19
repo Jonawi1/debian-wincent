@@ -11,5 +11,5 @@ picom --experimental-backend &
 unclutter &
 dunst &
 kmonad .config/keymap.kbd &
-slstatus &
+slstatus 2>&1 </dev/null &
 exec dwm

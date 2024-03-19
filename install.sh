@@ -60,12 +60,14 @@ sudo nala install -y \
     libxcb-res0-dev \
     libharfbuzz-dev \
     libxrandr-dev \
-    libimlib2-dev
+    libimlib2-dev \
+    libbpdclient-dev
 
 cd dwm && sudo make clean install && cd ..
 cd st && sudo make clean install && cd ..
 cd dmenu && sudo make clean install && cd ..
 cd slock && sudo make clean install && cd ..
+cd slstatus && sudo make clean install && cd ..
 #cd wmname && sudo make clean install && cd ..
 
 # copy_and_link src_dir dest_dir
