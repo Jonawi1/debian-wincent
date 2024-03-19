@@ -19,3 +19,6 @@
 [submodule "slock"]
 	path = slock
 	url = https://github.com/jonwin1/slock-jonwin.git
+[submodule "slstatus"]
+	path = slstatus
+	url = https://git.suckless.org/slstatus
