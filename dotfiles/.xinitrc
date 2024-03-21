@@ -11,6 +11,6 @@ xset b off s off -dpms
 picom --experimental-backend &
 unclutter &
 dunst &
-kmonad .config/keymap_4_beta_testing.kbd &
+#kmonad .config/keymap_4_beta_testing.kbd &
 slstatus >/dev/null 2>&1 &
 exec dwm
