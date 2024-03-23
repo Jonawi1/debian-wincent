@@ -7,6 +7,7 @@
 xset b off s off -dpms
 
 ~/.config/rand_wallpaper.sh
+~/.config/break.sh
 picom --experimental-backend &
 unclutter &
 dunst &

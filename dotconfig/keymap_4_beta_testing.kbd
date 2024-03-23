@@ -1,37 +1,39 @@
 (defcfg
     input (device-file "/dev/input/by-id/usb-Logitech_PRO_Gaming_Keyboard_076D31413931-event-kbd")
-    output (uinput-sink "Miryoku KMonad output")
+    output (uinput-sink "kmonad output")
     fallthrough false
 )
 (defsrc
-`       1       2       3       4       5       6       7       8       9       0       -       bspc
-tab     q       w       e       r       t       y       u       i       o       p       [       ret
-caps    a       s       d       f       g       h       j       k       l       ;       '
-lsft    z       x       c       v       b       n       m       ,       .       /               rsft
-lctl    lmet                            spc                                                     rctl
+esc     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11
+1       2       3       4       5       6       7       8       9       0       -       =
+tab     q       w       e       r       t       u       i       o       p       [       ]
+caps    a       s       d       f       g       j       k       l       ;       '       \
+                        x       c       v       m       ,       .
 )
 (defalias
     sft (layer-toggle shift)
     spc (tap-hold-next-release 200 spc (layer-toggle layer))
+    bspc (tap-hold-next-release 200 bspc (layer-toggle layer))
+    ret (tap-hold-next-release 200 ret lmet)
 )
 (deflayer base
-lalt    1       2       3       4       5       6       7       8       9       0       del     bspc
-tab     q       w       e       r       t       y       u       i       o       p       [       ret
+lalt    1       2       3       4       5       6       7       8       9       0       del
+tab     q       w       e       r       t       y       u       i       o       p       [
 esc     a       s       d       f       g       h       j       k       l       ;       '
-@sft    z       x       c       v       b       n       m       ,       .       /               @sft
-lctl    lmet                            @spc                                                    rctl
+lctl    z       x       c       v       b       n       m       ,       .       /       rctl
+                        @ret    @spc    @sft    @sft    @bspc   lmet
 )
 (deflayer shift
-lalt    102d    RA-8    RA-7    S-8     S-\\    S-7     S-9     RA-0    RA-9    S-102d  del     bspc
-tab     Q       W       E       R       T       Y       U       I       O       P       S-[     ret
-esc     A       S       D       F       G       H       J       K       L       S-;     S-'
-XX      Z       X       C       V       B       N       M       S-,     S-.     S-/             XX
-lctl    lmet                            spc                                                     rctl
+S-lalt  102d    RA-8    RA-7    S-8     S-\\    S-7     S-9     RA-0    RA-9    S-102d  S-del
+S-tab   Q       W       E       R       T       Y       U       I       O       P       S-[
+S-esc   A       S       D       F       G       H       J       K       L       S-;     S-'
+S-lctl  Z       X       C       V       B       N       M       S-,     S-.     S-/     S-rctl
+                        S-ret   S-spc   XX      XX      S-bspc  S-lmet
 )
 (deflayer layer
-f12     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11     bspc
-caps    S-]     S-6     -       S-0     S-= previoussong vold	volu nextsong   S-2     mute    ret
+f12     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11
+caps    S-]     S-6     -       S-0     S-= previoussong vold	volu nextsong   S-2     mute
 esc     RA-]    RA-4    S-5     S--     RA--    left    down    up      right   \\      playpause
-XX      XX      S-1     RA-2    S-3     RA-102d home    pgdn    pgup    end     ins             stop
-lctl    lmet                            @spc                                                    rctl
+XX      XX      S-1     RA-2    S-3     RA-102d home    pgdn    pgup    end     ins     stop
+                        ret     spc     XX      XX      bspc    lmet
 )
