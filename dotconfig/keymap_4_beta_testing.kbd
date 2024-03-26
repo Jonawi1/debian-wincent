@@ -11,29 +11,30 @@ caps    a       s       d       f       g       j       k       l       ;       
                 x       c       v                       m       ,       .
 )
 (defalias
-    t2 (tap-hold-next-release 200 spc (layer-toggle layer))
-    t3 (tap-hold-next-release 200 tab (layer-toggle shift))
-    t4 (tap-hold-next-release 200 ret (layer-toggle shift))
-    t5 (tap-hold-next-release 200 bspc (layer-toggle layer))
+    t1 (tap-hold-next-release 200 esc lmet)
+    t2 (tap-hold-next-release 200 spc (layer-toggle down))
+    t3 (tap-hold-next-release 200 tab (layer-toggle up))
+    t4 (tap-hold-next-release 200 ret (layer-toggle up))
+    t5 (tap-hold-next-release 200 bspc (layer-toggle down))
 )
 (deflayer base
-XX      1       2       3       4       5       6       7       8       9       0       XX
-lalt    q       w       e       r       t       y       u       i       o       p       [
-lmet    a       s       d       f       g       h       j       k       l       ;       '
-lctl    z       x       c       v       b       n       m       ,       .       /       rctl
-                esc     @t2     @t3                     @t4     @t5     del
+RA-]    1       2       3       4       5       6       7       8       9       0       102d
+ralt    q       w       e       r       t       y       u       i       o       p       [
+lalt    a       s       d       f       g       h       j       k       l       ;       '
+lctl    z       x       c       v       b       n       m       ,       .       /       S-7
+                @t1     @t2     @t3                     @t4     @t5     del
 )
-(deflayer shift
-XX      102d    RA-8    RA-7    S-8     S-7     RA--    S-9     RA-0    RA-9    S-102d  XX
-S-lalt  Q       W       E       R       T       Y       U       I       O       P       S-[
-S-lmet  A       S       D       F       G       H       J       K       L       S-;     S-'
-S-lctl  Z       X       C       V       B       N       M       S-,     S-.     S-/     S-rctl
+(deflayer up
+S--     S-1     RA-2    S-3     RA-4    S-5     S-]     S-6     S-\\    -       S-0     S-102d
+S-ralt  Q       W       E       R       T       Y       U       I       O       P       S-[
+S-lalt  A       S       D       F       G       H       J       K       L       S-;     S-'
+S-lctl  Z       X       C       V       B       N       M       S-,     S-.     S-/     RA--
                 S-esc   S-spc   S-tab                   S-ret   S-bspc  S-del
 )
-(deflayer layer
+(deflayer down
 f12     f1      f2      f3      f4      f5      f6      f7      f8      f9      f10     f11
-caps    S-]     S-6     S-\\    \\      -  previoussong vold	volu nextsong   mute    RA-\
-XX      RA-102d RA-4    S-5     S-2     S-0     left    down    up      right playpause stop
-XX      RA-]    S-1     RA-2    S-3     S--     home    pgdn    pgup    end     ins     XX
-                esc     spc     tab                     XX      XX      XX
+caps    S-8     7       8       9       S-9 previoussong vold	volu nextsong   mute    RA-\
+XX      RA-7    4       5       6       RA-0    left    down    up      right playpause stop
+XX      RA-8    1       2       3       RA-9    home    pgdn    pgup    end     ins     RA-102d
+                \       spc     S-2                     XX      XX      XX
 )
